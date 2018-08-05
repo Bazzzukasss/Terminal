@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="34px" viewBox="0 0 28 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48 (47235) - http://www.bohemiancoding.com/sketch -->
+    <title>caps-text-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Key-Letter-CAPS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-56.000000, -29.000000)">
+        <g id="caps-text-icon" transform="translate(40.000000, 16.000000)">
+            <g id="Group" transform="translate(16.000000, 13.000000)" fill="#FFFFFF">
+                <path d="M19.3846154,15.0739714 L19.3846154,22 L9.15384615,22 L9.15384615,15.0561166 L0.134491409,15.040376 L13.9747936,0.0445187115 L27.8675218,15.0887757 L19.3846154,15.0739714 Z" id="Rectangle-115"></path>
+                <rect id="Rectangle-117" x="0" y="31" width="28" height="3"></rect>
+            </g>
+            <rect id="Rectangle-6" x="0" y="0" width="60" height="60"></rect>
+        </g>
+    </g>
+</svg>

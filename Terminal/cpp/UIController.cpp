@@ -1,5 +1,6 @@
 #include "UIController.h"
 #include <QFileInfo>
+#include <QDebug>
 
 UIController::UIController(QObject *parent)
     :QObject(parent)
@@ -17,7 +18,8 @@ bool UIController::isReleaseVersion()
 
 bool UIController::isPinGood(const QString &aPin)
 {
-    return true;
+    qDebug()<<"PIN:"<<aPin;
+    return aPin == "123";
 }
 
 int UIController::getCardMode() const

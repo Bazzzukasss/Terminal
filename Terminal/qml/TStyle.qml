@@ -72,8 +72,24 @@ QtObject {
         fonts:          [fontH2Black,fontH2White]
         size:           20
     }
-
+    readonly property TStyleItem keyboard: TStyleItem {
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem edit: TStyleItem {
+        geometry:       [0,80,20]
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH2Black,fontH2White]
+        borderColor:    clGrey
+        borderWidth:    1
+        size:           30
+    }
+    readonly property TStyleItem line: TStyleItem {
+        bgColors:       [clGrey,clGrey]
+        size:           1
+    }
     //Buttons
+
     readonly property TStyleItem buttonCard: TStyleItem {
         geometry:       [50,50,0]
         bgColors:       [clTransparent,clTransparent]
@@ -118,6 +134,115 @@ QtObject {
         bgColors:       [clGrey,clGrey]
         fonts:          [fontH2White]
     }
+    //Keyboard
+    readonly property int keyHeight: 92
+
+    readonly property TStyleItem buttonEdit: TStyleItem {
+        geometry:       [40,40,0]
+        useIconColor:   true
+        iconColor:      clGrey
+        fonts:          [fontH5Black]
+    }
+
+    readonly property TStyleItem buttonKeyboard: TStyleItem {
+        geometry:       [92,keyHeight,0]
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardShort: TStyleItem {
+        geometry:       [46,keyHeight,0]
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardShift: TStyleItem {
+        geometry:       [138,keyHeight,0]
+        useIconColor:   true
+        iconColor:      clGrey
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardWide: TStyleItem {
+        geometry:       [92,keyHeight,0]
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardSpace: TStyleItem {
+        geometry:       [426,keyHeight,0]
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardCtrl: TStyleItem {
+        geometry:       [250,keyHeight,0]
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardNum: TStyleItem {
+        geometry:       [307,keyHeight,0]
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardNumOk: TStyleItem {
+        geometry:       [307,keyHeight,0]
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardOk: TStyleItem {
+        geometry:       [250,keyHeight,0]
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonDefault: TStyleItem {
+        geometry:       [120,120,60]
+        borderColor:    clBlack
+        fonts:          [fontH5Black]
+    }
+
+    readonly property TStyleItem buttonKeyboardPressed: TStyleItem {
+        geometry:       [92,keyHeight,0]
+        bgColors:       [clGrey,clGrey]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardShortPressed: TStyleItem {
+        geometry:       [46,keyHeight,0]
+        bgColors:       [clWhite,clWhite]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardShiftPressed: TStyleItem {
+        geometry:       [138,keyHeight,0]
+        bgColors:       [clGrey,clGrey]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardWidePressed: TStyleItem {
+        geometry:       [92,keyHeight,0]
+        bgColors:       [clGrey,clGrey]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardSpacePressed: TStyleItem {
+        geometry:       [426,keyHeight,0]
+        bgColors:       [clGrey,clGrey]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardCtrlPressed: TStyleItem {
+        geometry:       [250,keyHeight,0]
+        bgColors:       [clGrey,clGrey]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardNumPressed: TStyleItem {
+        geometry:       [307,keyHeight,0]
+        bgColors:       [clGrey,clGrey]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardNumOkPressed: TStyleItem {
+        geometry:       [307,keyHeight,0]
+        bgColors:       [clGrey,clGrey]
+        fonts:          [fontH3Black]
+    }
+    readonly property TStyleItem buttonKeyboardOkPressed: TStyleItem {
+        geometry:       [250,keyHeight,0]
+        bgColors:       [clGrey,clGrey]
+        fonts:          [fontH3Black]
+    }
+
     /*
     readonly property TStyleItem platformIndicator: TStyleItem {
         geometry:       [300,330,40]

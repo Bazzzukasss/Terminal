@@ -52,7 +52,12 @@ DISTFILES += \
     qml/TMenuWait.qml \
     qml/TMessage.qml \
     qml/TFooter.qml \
-    qml/TDisabledShade.qml
+    qml/TDisabledShade.qml \
+    qml/TEdit.qml \
+    qml/TInput.qml \
+    qml/TVLine.qml \
+    qml/TButtonKeyboard.qml \
+    qml/TLine.qml
 
 HEADERS += \
     cpp/Linguist.h \

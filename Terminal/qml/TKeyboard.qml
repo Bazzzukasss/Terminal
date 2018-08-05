@@ -9,6 +9,8 @@ TRectangle {
     property int keyboardType:0
     property TStyleItem styleItem: MyStyle.keyboard
     property string okButtonCaption: "OK"
+    property bool isButtonOk: true
+
     color1: styleItem.bgColors[0]
     color2: styleItem.bgColors[1]
 
@@ -122,7 +124,7 @@ TRectangle {
                             id: shiftLettersButton
                             caption:lettersLine3[caseType][0];
                             key:"^";
-                            icon:"qrc:/img/mvp/shift.svg";
+                            icon:"qrc:/img/shift.svg";
                             styleItem: MyStyle.buttonKeyboardShift
                             styleItemPressed: MyStyle.buttonKeyboardShiftPressed
                             onSignalClicked: caseType = caseType==0 ? 1 : 0
@@ -138,7 +140,7 @@ TRectangle {
                         TButtonKeyboard{
                             caption:lettersLine3[caseType][8];
                             key:"<";
-                            icon:"qrc:/img/mvp/backspace.svg";
+                            icon:"qrc:/img/backspace.svg";
                             styleItem: MyStyle.buttonKeyboardShift
                             styleItemPressed: MyStyle.buttonKeyboardShiftPressed
                         }
@@ -151,7 +153,7 @@ TRectangle {
                     children:[
                         TButtonKeyboard{caption:"123"; styleItem: MyStyle.buttonKeyboardCtrl;styleItemPressed: MyStyle.buttonKeyboardCtrlPressed;onSignalClicked: keyboardType = keyboardType==0 ? 1 : 0},
                         TButtonKeyboard{caption:qsTr("space") + cppLinguist.emptyString; key:" "; styleItem: MyStyle.buttonKeyboardSpace;styleItemPressed: MyStyle.buttonKeyboardSpacePressed},
-                        TButtonKeyboard{caption:root.okButtonCaption; styleItem: MyStyle.buttonKeyboardOk;styleItemPressed: MyStyle.buttonKeyboardOkPressed}
+                        TButtonKeyboard{caption:root.okButtonCaption; visible: root.isButtonOk; styleItem: MyStyle.buttonKeyboardOk;styleItemPressed: MyStyle.buttonKeyboardOkPressed}
                     ]
                 }
             }
@@ -211,7 +213,7 @@ TRectangle {
                             id: shiftNumbersButton
                             caption:numbersLine3[caseType][0];
                             key:"^";
-                            //icon:"qrc:/img/mvp/shift.svg";
+                            //icon:"qrc:/img/shift.svg";
                             styleItem: MyStyle.buttonKeyboardShift
                             styleItemPressed: MyStyle.buttonKeyboardShiftPressed
                             onSignalClicked: caseType = caseType==0 ? 1 : 0
@@ -224,7 +226,7 @@ TRectangle {
                         TButtonKeyboard{
                             caption:numbersLine3[caseType][6];
                             key:"<";
-                            icon:"qrc:/img/mvp/backspace.svg";
+                            icon:"qrc:/img/backspace.svg";
                             styleItem: MyStyle.buttonKeyboardShift
                             styleItemPressed: MyStyle.buttonKeyboardShiftPressed
                         },
@@ -239,7 +241,7 @@ TRectangle {
                     children:[
                         TButtonKeyboard{caption:"ABC"; styleItem: MyStyle.buttonKeyboardCtrl;styleItemPressed: MyStyle.buttonKeyboardCtrlPressed;onSignalClicked: keyboardType = keyboardType==0 ? 1 : 0},
                         TButtonKeyboard{caption:qsTr("space") + cppLinguist.emptyString; key:" "; styleItem: MyStyle.buttonKeyboardSpace;styleItemPressed: MyStyle.buttonKeyboardSpacePressed},
-                        TButtonKeyboard{caption:root.okButtonCaption; styleItem: MyStyle.buttonKeyboardOk;styleItemPressed: MyStyle.buttonKeyboardOkPressed}
+                        TButtonKeyboard{caption:root.okButtonCaption; visible: root.isButtonOk; styleItem: MyStyle.buttonKeyboardOk;styleItemPressed: MyStyle.buttonKeyboardOkPressed}
                     ]
                 }
             }
@@ -291,7 +293,7 @@ TRectangle {
                     children:[
                         TButtonKeyboard{caption:Qt.locale().decimalPoint; styleItem: MyStyle.buttonKeyboardNum;styleItemPressed: MyStyle.buttonKeyboardNumPressed},
                         TButtonKeyboard{caption:"0"; styleItem: MyStyle.buttonKeyboardNum;styleItemPressed: MyStyle.buttonKeyboardNumPressed},
-                        TButtonKeyboard{caption:root.okButtonCaption; styleItem: MyStyle.buttonKeyboardNumOk;styleItemPressed: MyStyle.buttonKeyboardNumOkPressed}
+                        TButtonKeyboard{caption:root.okButtonCaption; visible: root.isButtonOk; styleItem: MyStyle.buttonKeyboardNumOk;styleItemPressed: MyStyle.buttonKeyboardNumOkPressed}
                     ]
                 }
             }

@@ -28,5 +28,13 @@
         <file>img/error-image.svg</file>
         <file>img/information-image.svg</file>
         <file>img/success-image.svg</file>
+        <file>qml/TEdit.qml</file>
+        <file>qml/TInput.qml</file>
+        <file>qml/TVLine.qml</file>
+        <file>qml/TButtonKeyboard.qml</file>
+        <file>qml/TLine.qml</file>
+        <file>img/backspace.svg</file>
+        <file>img/clear.svg</file>
+        <file>img/shift.svg</file>
     </qresource>
 </RCC>

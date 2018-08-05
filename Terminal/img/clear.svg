@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>delete-input-field</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Final" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Ethernet-/-IP" transform="translate(-924.000000, -146.000000)" fill="#FFFFFF">
+            <g id="Elements-/-Text-input-field" transform="translate(130.000000, 126.000000)">
+                <path d="M814,60 C825.045695,60 834,51.045695 834,40 C834,28.954305 825.045695,20 814,20 C802.954305,20 794,28.954305 794,40 C794,51.045695 802.954305,60 814,60 Z M822.666667,46.3333333 L820.333333,48.6666667 L814.333333,42.6666667 L808.333333,48.6666667 L806,46.3333333 L812,40.3333333 L806,34.3333333 L808.333333,32 L814.333333,38 L820.333333,32 L822.666667,34.3333333 L816.666667,40.3333333 L822.666667,46.3333333 L822.666667,46.3333333 Z" id="delete-input-field"></path>
+            </g>
+        </g>
+    </g>
+</svg>
