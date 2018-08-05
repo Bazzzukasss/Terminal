@@ -16,7 +16,8 @@ SOURCES += \
     cpp/Linguist.cpp \
     cpp/main.cpp \
     cpp/Messenger.cpp \
-    cpp/UILogic.cpp
+    cpp/UILogic.cpp \
+    cpp/UIController.cpp
 
 RESOURCES += \
     res.qrc
@@ -49,9 +50,12 @@ DISTFILES += \
     qml/TMenuError.qml \
     qml/TMenuInformation.qml \
     qml/TMenuWait.qml \
-    qml/TMessage.qml
+    qml/TMessage.qml \
+    qml/TFooter.qml \
+    qml/TDisabledShade.qml
 
 HEADERS += \
     cpp/Linguist.h \
     cpp/Messenger.h \
-    cpp/UILogic.h
+    cpp/UILogic.h \
+    cpp/UIController.h

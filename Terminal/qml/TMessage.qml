@@ -6,8 +6,8 @@ Item {
     property string name: "MESSAGE"
     objectName: "MESSAGE"
     property TStyleItem styleItem: MyStyle.message
-    property var buttonStyles: [MyStyle.buttonMessageBlue,MyStyle.buttonMessageRed]
-    property var buttonStylesPressed: [MyStyle.buttonMessageBluePressed,MyStyle.buttonMessageRedPressed]
+    property var buttonStyles: [MyStyle.buttonMessageStandat,MyStyle.buttonMessageImportant]
+    property var buttonStylesPressed: [MyStyle.buttonMessageStandatPressed,MyStyle.buttonMessageImportamtPressed]
     property int type: 2
     property alias icon : img.source
     property alias caption : labelCaption.text

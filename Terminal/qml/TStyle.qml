@@ -14,12 +14,14 @@ QtObject {
     readonly property int sizeH6:			18
 		
 //Colors
+    readonly property color clTransparent:  "#00000000"
     readonly property color clWhite:        "#ffffff"
     readonly property color clBlack:		"#000000"
     readonly property color clBlue:			"#1991eb"
     readonly property color clRed:			"#f85359"
     readonly property color clGreen:        "#39b54a"
-    readonly property color clGrey:         "#818790"
+    readonly property color clYellow:       "#ffff00"
+    readonly property color clGrey:         "#999999"
 
 //Fonts
 	readonly property string fontFamily:		"Roboto"
@@ -46,6 +48,11 @@ QtObject {
     readonly property TStyleFont fontH5White:     TStyleFont{ font: fontH5; color: clWhite }
     readonly property TStyleFont fontH6White:     TStyleFont{ font: fontH6; color: clWhite }
 
+    readonly property TStyleFont fontLabel:         fontH2White
+    readonly property TStyleFont fontStateLabel:    fontH4White
+    readonly property TStyleFont fontPriceLabel:    TStyleFont{ font: fontH2; color: clYellow }
+
+
 //Menu
     readonly property string menuStart: "MENU_START"
 
@@ -56,7 +63,60 @@ QtObject {
 //Styles
     //Elements
     readonly property TStyleItem menu: TStyleItem {
+        bgColors:       [clGrey,clBlack]
+    }
+
+    readonly property TStyleItem message: TStyleItem {
+        geometry:       [904,480,20]
         bgColors:       [clWhite,clWhite]
+        fonts:          [fontH2Black,fontH2White]
+        size:           20
+    }
+
+    //Buttons
+    readonly property TStyleItem buttonCard: TStyleItem {
+        geometry:       [50,50,0]
+        bgColors:       [clTransparent,clTransparent]
+        fonts:          [fontH2White]
+        useIconGeometry: true
+        iconGeometry:   [50,50,0]
+    }
+
+    readonly property TStyleItem buttonStop: TStyleItem {
+        geometry:       [355,100,50]
+        bgColors:       [clRed,clRed]
+        fonts:          [fontH2White]
+    }
+    readonly property TStyleItem buttonCorrection: TStyleItem {
+        geometry:       [355,100,50]
+        bgColors:       [clYellow,clYellow]
+        fonts:          [fontH2White]
+    }
+    readonly property TStyleItem buttonOk: TStyleItem {
+        geometry:       [355,100,50]
+        bgColors:       [clGreen,clGreen]
+        fonts:          [fontH2White]
+    }
+
+    readonly property TStyleItem buttonMessageImportant: TStyleItem {
+        geometry:       [355,100,50]
+        bgColors:       [clRed,clRed]
+        fonts:          [fontH2White]
+    }
+    readonly property TStyleItem buttonMessageStandart: TStyleItem {
+        geometry:       [355,100,50]
+        bgColors:       [clBlue,clBlue]
+        fonts:          [fontH2White]
+    }
+    readonly property TStyleItem buttonMessageImportantPressed: TStyleItem {
+        geometry:       [355,100,50]
+        bgColors:       [clGrey,clGrey]
+        fonts:          [fontH2White]
+    }
+    readonly property TStyleItem buttonMessageStandartPressed: TStyleItem {
+        geometry:       [355,100,50]
+        bgColors:       [clGrey,clGrey]
+        fonts:          [fontH2White]
     }
     /*
     readonly property TStyleItem platformIndicator: TStyleItem {

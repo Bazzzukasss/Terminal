@@ -8,6 +8,7 @@
 
 class QQuickWindow;
 class QQmlApplicationEngine;
+class UIController;
 
 typedef std::function<void(QVariant const&)> Handler;
 typedef QMap<QString,Handler> HandlerMap;
@@ -33,6 +34,8 @@ signals:
 protected:
     QQmlApplicationEngine* mpEngine;
     QQuickWindow* mpQuickWindow;
+    Messenger* mpMessenger;
+    UIController* mpUIController;
     HandlerMap  mActionHandlers;
     HandlerMap  mParamHandlers;
 
@@ -45,10 +48,7 @@ protected:
 
 private slots:
     void slotUIParameterChanged(QString aParam, QVariant aValue);
-    void slotUIAction(QString aParam, QVariant aValue);
-
-private:
-    Messenger* mpMessenger;
+    void slotUIAction(QString aParam, QVariant aValue);    
 };
 
 #endif // UILOGIC_H

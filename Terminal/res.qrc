@@ -18,5 +18,12 @@
         <file>qml/TMenuWait.qml</file>
         <file>fonts/Roboto-Bold.ttf</file>
         <file>qml/TMessage.qml</file>
+        <file>img/start-image.png</file>
+        <file>qml/TFooter.qml</file>
+        <file>img/card-chip.svg</file>
+        <file>img/card-nfc.svg</file>
+        <file>img/card-stripe.svg</file>
+        <file>qml/TDisabledShade.qml</file>
+        <file>img/card-none.svg</file>
     </qresource>
 </RCC>

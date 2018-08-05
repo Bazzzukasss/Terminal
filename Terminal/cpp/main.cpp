@@ -7,7 +7,9 @@
 void InitializeLinguist(QTranslator* translator)
 {
     Linguist::getInstance()->setTranslator(translator);
-    Linguist::getInstance()->addLanguage(LanguageData({ "English", ":/terminal_en_US.qm", "en_US",":/img/flags/United-States.png" }));
+    Linguist::getInstance()->addLanguage(LanguageData({ "English",      ":/terminal_en_US.qm", "en_US", ":/img/flags/United-States.png" }));
+    Linguist::getInstance()->addLanguage(LanguageData({ "Ukrainian",    ":/terminal_uk_UA.qm", "uk_UA", ":/img/flags/Ukrain.png" }));
+    Linguist::getInstance()->addLanguage(LanguageData({ "Russian",      ":/terminal_ru_RU.qm", "ru_RU", ":/img/flags/Russian.png" }));
     Linguist::getInstance()->setCurrentLanguage();
 }
 
