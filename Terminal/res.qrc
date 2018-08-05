@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/TStyle.qml</file>
+        <file>qml/TStyleFont.qml</file>
+        <file>qml/TStyleItem.qml</file>
+        <file>qml/TButton.qml</file>
+        <file>qml/TKeyboard.qml</file>
+        <file>qml/TLabel.qml</file>
+        <file>qml/TMenu.qml</file>
+        <file>qml/TRectangle.qml</file>
+        <file>qml/TMenuCard.qml</file>
+        <file>qml/TMenuError.qml</file>
+        <file>qml/TMenuInformation.qml</file>
+        <file>qml/TMenuPin.qml</file>
+        <file>qml/TMenuStart.qml</file>
+        <file>qml/TMenuSuccess.qml</file>
+        <file>qml/TMenuWait.qml</file>
+        <file>fonts/Roboto-Bold.ttf</file>
+        <file>qml/TMessage.qml</file>
+    </qresource>
+</RCC>

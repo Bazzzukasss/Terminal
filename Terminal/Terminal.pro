@@ -1,4 +1,4 @@
-QT += quick
+QT += quick widgets
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -13,9 +13,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp
+    cpp/Linguist.cpp \
+    cpp/main.cpp \
+    cpp/Messenger.cpp \
+    cpp/UILogic.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += \
+    res.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -27,3 +31,27 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    qml/main.qml \
+    qml/TButton.qml \
+    qml/TKeyboard.qml \
+    qml/TLabel.qml \
+    qml/TMenu.qml \
+    qml/TRectangle.qml \
+    qml/TStyle.qml \
+    qml/TStyleFont.qml \
+    qml/TStyleItem.qml \
+    qml/TMenuStart.qml \
+    qml/TMenuCard.qml \
+    qml/TMenuPin.qml \
+    qml/TMenuSuccess.qml \
+    qml/TMenuError.qml \
+    qml/TMenuInformation.qml \
+    qml/TMenuWait.qml \
+    qml/TMessage.qml
+
+HEADERS += \
+    cpp/Linguist.h \
+    cpp/Messenger.h \
+    cpp/UILogic.h
