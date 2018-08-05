@@ -8,12 +8,26 @@ Item {
     anchors.bottom: parent.bottom
     height: buttonStop.height
 
+    property alias isBackButton: buttonBack.visible
+
     signal signalStop()
     signal signalCorrection()
     signal signalOk();
+    signal signalBack();
+
+    TButton{
+        id: buttonBack
+        visible: false
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        styleItem: MyStyle.buttonStop
+        onSignalClicked: root.signalBack();
+        caption: qsTr("Back") + cppLinguist.emptyString
+    }
 
     TButton{
         id: buttonStop
+        visible: !buttonBack.visible
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         styleItem: MyStyle.buttonStop

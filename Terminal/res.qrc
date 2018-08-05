@@ -25,5 +25,8 @@
         <file>img/card-stripe.svg</file>
         <file>qml/TDisabledShade.qml</file>
         <file>img/card-none.svg</file>
+        <file>img/error-image.svg</file>
+        <file>img/information-image.svg</file>
+        <file>img/success-image.svg</file>
     </qresource>
 </RCC>

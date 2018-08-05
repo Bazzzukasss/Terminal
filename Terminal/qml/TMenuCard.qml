@@ -69,9 +69,19 @@ TMenu{
         }
 
         TFooter{
-            onSignalStop: root.signalUIAction("actionPaymentStop","")
-            onSignalCorrection: root.signalUIAction("actionPaymentCorrection","")
-            onSignalOk: root.signalUIAction("actionPaymentOk","")
+            onSignalStop:{
+                root.signalUIAction("actionPaymentStop","")
+                root.signalGoTo("MENU_START")
+            }
+
+            onSignalCorrection:{
+                root.signalUIAction("actionPaymentCorrection","")
+            }
+
+            onSignalOk:{
+                root.signalUIAction("actionPaymentOk","")
+                root.signalGoTo("MENU_PIN")
+            }
         }
     }
 

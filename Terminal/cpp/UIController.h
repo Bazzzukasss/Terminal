@@ -12,6 +12,7 @@ public:
 
     Q_INVOKABLE bool isFileExists(const QString& aFilename);
     Q_INVOKABLE bool isReleaseVersion();
+    Q_INVOKABLE bool isPinGood(const QString& aPin);
 
     Q_PROPERTY(int cardMode READ getCardMode WRITE setCardMode NOTIFY signalCardModeChanged)
     Q_PROPERTY(QString cardState READ getCardState WRITE setCardState NOTIFY signalCardStateChanged)

@@ -15,6 +15,11 @@ bool UIController::isReleaseVersion()
     return false;
 }
 
+bool UIController::isPinGood(const QString &aPin)
+{
+    return true;
+}
+
 int UIController::getCardMode() const
 {
     return mCardMode;
