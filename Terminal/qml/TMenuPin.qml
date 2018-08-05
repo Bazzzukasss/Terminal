@@ -24,11 +24,11 @@ TMenu{
             onSignalBack: root.signalGoTo("MENU_CARD")
             onSignalCorrection: input.backSpace()
             onSignalOk:{
-                input.clearValue()
                 if(cppUIController.isPinGood(input.value))
                     root.signalGoTo("MENU_SUCCESS")
                 else
                     root.signalGoTo("MENU_ERROR")
+                input.clearValue()
             }
         }
     }

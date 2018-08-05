@@ -37,6 +37,11 @@ double UIController::getPrice() const
     return mPrice;
 }
 
+bool UIController::getCardPresent() const
+{
+    return mIsCardPresent;
+}
+
 void UIController::setCardMode(int cardMode)
 {
     mCardMode = cardMode;
@@ -53,5 +58,11 @@ void UIController::setPrice(double price)
 {
     mPrice = price;
     emit signalPriceChanged(mPrice);
+}
+
+void UIController::setCardPresent(bool isCardPresent)
+{
+    mIsCardPresent = isCardPresent;
+    emit signalCardPresentChanged(mIsCardPresent);
 }
 

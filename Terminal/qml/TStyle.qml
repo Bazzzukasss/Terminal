@@ -60,6 +60,9 @@ QtObject {
     readonly property int screenWidth:	1024
     readonly property int screenHeight:	600
 
+//Constants
+    readonly property int timerValue: 3000
+
 //Styles
     //Elements
     readonly property TStyleItem menu: TStyleItem {

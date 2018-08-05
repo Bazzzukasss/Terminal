@@ -5,6 +5,25 @@ TMenu{
     id: root
     name:"MENU_SUCCESS"
 
+    onVisibleChanged:{
+        if(visible)
+            timer.start()
+        else
+            timer.stop()
+    }
+
+    Timer{
+        id: timer
+        interval: MyStyle.timerValue;
+        onTriggered:{
+            if(cppUIController.isCardPresent)
+                root.signalGoTo("MENU_CARD");
+            else
+                root.signalGoTo("MENU_START");
+        }
+
+    }
+
     Item{
         anchors.fill: parent
         Image{
