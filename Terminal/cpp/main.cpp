@@ -3,6 +3,7 @@
 #include <QFontDatabase>
 #include "Linguist.h"
 #include "UILogic.h"
+#include "UIControllerTerminal.h"
 
 void InitializeLinguist(QTranslator* translator)
 {
@@ -27,7 +28,8 @@ int main(int argc, char *argv[])
     QTranslator translator;
     InitializeLinguist(&translator);
 
-    auto uiLogic = new UILogic(&engine);
+    UIControllerTerminal uiController;
+    UILogic uiLogic(&engine,&uiController);
 
     qmlRegisterSingletonType(QUrl(QLatin1String("qrc:/qml/TStyle.qml")), "CustomControls", 1, 0, "MyStyle");
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));

@@ -36,5 +36,10 @@
         <file>img/backspace.svg</file>
         <file>img/clear.svg</file>
         <file>img/shift.svg</file>
+        <file>img/message-done.svg</file>
+        <file>img/message-info.svg</file>
+        <file>img/message-request.svg</file>
+        <file>img/message-spinner.gif</file>
+        <file>img/message-warning.svg</file>
     </qresource>
 </RCC>

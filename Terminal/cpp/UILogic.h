@@ -18,7 +18,7 @@ class UILogic : public QObject
     Q_OBJECT
 
 public:
-    explicit UILogic(QQmlApplicationEngine* apEngine, QObject *parent = nullptr);
+    explicit UILogic(QQmlApplicationEngine* apEngine, UIController* apUIController = nullptr, QObject *parent = nullptr);
 
     QVariant getQMLProperty(QString const& aParamID);
     void setQMLProperty(QString const& aParamID, QVariant const& aValue);

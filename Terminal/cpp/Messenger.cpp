@@ -36,7 +36,8 @@ QString Messenger::showMessage(MessageType aType, const QString aText, int aShow
                         mSourcePath+"message-spinner.gif",
                         mSourcePath+"message-error.svg",
                         mSourcePath+"message-warning.svg",
-                        mSourcePath+"message-done.svg"
+                        mSourcePath+"message-done.svg",
+                        mSourcePath+"message-spinner.gif",
                         };
 
     QString captions[] = {  tr("Information"),
@@ -45,7 +46,8 @@ QString Messenger::showMessage(MessageType aType, const QString aText, int aShow
                             tr("Processing..."),
                             tr("Error"),
                             tr("Information"),
-                            tr("Welldone")
+                            tr("Welldone"),
+                            tr("Processing...")
                             };
 
     QList<MessageButton> buttons[] = {
@@ -55,7 +57,8 @@ QString Messenger::showMessage(MessageType aType, const QString aText, int aShow
         {ButtonStop},
         {ButtonCancel,ButtonOk},
         {ButtonOk},
-        {ButtonCancel,ButtonApply}
+        {ButtonCancel,ButtonApply},
+        {}
     };
 
     return showMessage(icons[aType],captions[aType], aText, buttons[aType], aShowingTime, aIsNeedToWaitAnswer);

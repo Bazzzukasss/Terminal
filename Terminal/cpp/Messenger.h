@@ -31,7 +31,7 @@ class Messenger : public QObject
 	Q_OBJECT
 
 public:
-    enum MessageType { MT_INFORMATION, MT_WARNING, MT_REQUEST, MT_MOVING, MT_ERROR, MT_ATTENTION, MT_DONE };
+    enum MessageType { MT_INFORMATION, MT_WARNING, MT_REQUEST, MT_MOVING, MT_ERROR, MT_ATTENTION, MT_DONE, MT_WAITING };
 
 
     Messenger(QObject* parent = 0);

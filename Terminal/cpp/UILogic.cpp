@@ -8,11 +8,11 @@
 #include "Messenger.h"
 #include "UIController.h"
 
-UILogic::UILogic(QQmlApplicationEngine *apEngine, QObject *parent)
+UILogic::UILogic(QQmlApplicationEngine *apEngine, UIController *apUIController, QObject *parent)
     : QObject(parent)
     , mpEngine(apEngine)
     , mpMessenger (new Messenger(this))
-    , mpUIController(new UIController(this))
+    , mpUIController(apUIController)
 {   
     connect(mpEngine,&QQmlApplicationEngine::objectCreated,[&](){
         mpQuickWindow = qobject_cast<QQuickWindow*>(mpEngine->rootObjects().value(0));
@@ -26,7 +26,11 @@ UILogic::UILogic(QQmlApplicationEngine *apEngine, QObject *parent)
     });
 
     setContextProperty("cppLinguist", Linguist::getInstance());
-    setContextProperty("cppUIController", mpUIController);
+    if(mpUIController != nullptr)
+    {
+        setContextProperty("cppUIController", mpUIController);
+        mpUIController->setUILogic(this);
+    }
 }
 
 void UILogic::initializeProperties()

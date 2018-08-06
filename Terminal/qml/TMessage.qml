@@ -6,8 +6,8 @@ Item {
     property string name: "MESSAGE"
     objectName: "MESSAGE"
     property TStyleItem styleItem: MyStyle.message
-    property var buttonStyles: [MyStyle.buttonMessageStandat,MyStyle.buttonMessageImportant]
-    property var buttonStylesPressed: [MyStyle.buttonMessageStandatPressed,MyStyle.buttonMessageImportamtPressed]
+    property var buttonStyles: [MyStyle.buttonMessageStandart,MyStyle.buttonMessageImportant]
+    property var buttonStylesPressed: [MyStyle.buttonMessageStandartPressed,MyStyle.buttonMessageImportantPressed]
     property int type: 2
     property alias icon : img.source
     property alias caption : labelCaption.text
@@ -95,7 +95,7 @@ Item {
                 AnimatedImage{
                     id: img
                     anchors.horizontalCenter: parent.horizontalCenter
-                    playing: root.type == 3
+                    playing: true
                 }
 
                 TLabel{

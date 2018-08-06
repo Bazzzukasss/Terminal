@@ -71,7 +71,7 @@ QtObject {
 
     readonly property TStyleItem message: TStyleItem {
         geometry:       [904,480,20]
-        bgColors:       [clWhite,clWhite]
+        bgColors:       [clGrey,clGrey]
         fonts:          [fontH2Black,fontH2White]
         size:           20
     }

@@ -17,7 +17,8 @@ SOURCES += \
     cpp/main.cpp \
     cpp/Messenger.cpp \
     cpp/UILogic.cpp \
-    cpp/UIController.cpp
+    cpp/UIController.cpp \
+    cpp/UIControllerTerminal.cpp
 
 RESOURCES += \
     res.qrc
@@ -63,4 +64,5 @@ HEADERS += \
     cpp/Linguist.h \
     cpp/Messenger.h \
     cpp/UILogic.h \
-    cpp/UIController.h
+    cpp/UIController.h \
+    cpp/UIControllerTerminal.h

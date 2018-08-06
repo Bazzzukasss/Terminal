@@ -70,15 +70,18 @@ TMenu{
 
         TFooter{
             onSignalStop:{
+                cppUIController.actionPayment("Stop");
                 root.signalUIAction("actionPaymentStop","")
                 root.signalGoTo("MENU_START")
             }
 
             onSignalCorrection:{
+                cppUIController.actionPayment("Correction");
                 root.signalUIAction("actionPaymentCorrection","")
             }
 
             onSignalOk:{
+                cppUIController.actionPayment("Ok");
                 root.signalUIAction("actionPaymentOk","")
                 root.signalGoTo("MENU_PIN")
             }
