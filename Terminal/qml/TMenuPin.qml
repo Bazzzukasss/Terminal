@@ -9,10 +9,7 @@ TMenu{
 
         TInput{
             id: input
-            anchors.left: parent.left
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.right: parent.right
+            anchors.fill: parent
             keyboardType: 2
             isButtonOk: false
             isSmartButtons: false

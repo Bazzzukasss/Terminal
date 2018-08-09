@@ -80,7 +80,7 @@ Window {
 		children: [
             TMenuStart				{ id: menuStart; visible: currentMenu === name },
             TMenuCard				{ id: menuCard; visible: currentMenu === name },
-            //TMenuPin				{ id: menuPin; visible: currentMenu === name },
+            TMenuPin				{ id: menuPin; visible: currentMenu === name },
             TMenuSuccess        	{ id: menuSuccess; visible: currentMenu === name },
             TMenuError				{ id: menuError; visible: currentMenu === name },
             TMenuInformation		{ id: menuInformation; visible: currentMenu === name },
