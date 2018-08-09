@@ -6,59 +6,46 @@ QtObject {
 	id: root
 
 //Sizes
-    readonly property int sizeH1:			56
-    readonly property int sizeH2:			48
-    readonly property int sizeH3:			40
-    readonly property int sizeH4:			32
-    readonly property int sizeH5:			24
-    readonly property int sizeH6:			18
+    readonly property int sizeH1:			32
+    readonly property int sizeH2:			24
+    readonly property int sizeH3:			16
 		
 //Colors
+
     readonly property color clTransparent:  "#00000000"
+    readonly property color clBlack:        "#000000"
     readonly property color clWhite:        "#ffffff"
-    readonly property color clBlack:		"#000000"
-    readonly property color clBlue:			"#1991eb"
-    readonly property color clRed:			"#f85359"
-    readonly property color clGreen:        "#39b54a"
-    readonly property color clYellow:       "#ffff00"
-    readonly property color clGrey:         "#999999"
+    readonly property color clDark:         "#dfe3e9"
+
+    readonly property color clRedDk:        "#cd080f"
+    readonly property color clRedLt:        "#cd080f"
+
+    readonly property color clYellowDk:     "#e6b900"
+    readonly property color clYellowLt:     "#ffcd00"
+
+    readonly property color clGreyDk:       "#231f20"
+    readonly property color clGreyLt:       "#555a60"
 
 //Fonts
-	readonly property string fontFamily:		"Roboto"
+    readonly property font fontH1b: Qt.font({ family: "Roboto-Black", bold: true, pixelSize: sizeH1})
+    readonly property font fontH2b: Qt.font({ family: "Roboto", bold: true, pixelSize: sizeH2})
+    readonly property font fontH3b: Qt.font({ family: "Roboto", bold: true, pixelSize: sizeH3})
+    readonly property font fontH3r: Qt.font({ family: "Roboto", bold: false, pixelSize: sizeH3})
 
-    readonly property font fontH1:	Qt.font({ family: fontFamily, bold: true, pixelSize: sizeH1})
-    readonly property font fontH2:	Qt.font({ family: fontFamily, bold: true, pixelSize: sizeH2})
-    readonly property font fontH3:	Qt.font({ family: fontFamily, bold: true, pixelSize: sizeH3})
-    readonly property font fontH4:	Qt.font({ family: fontFamily, bold: true, pixelSize: sizeH4})
-    readonly property font fontH5:	Qt.font({ family: fontFamily, bold: true, pixelSize: sizeH5})
-    readonly property font fontH6:	Qt.font({ family: fontFamily, bold: true, pixelSize: sizeH6})
+    readonly property TStyleFont fontH1bDk:  TStyleFont{ font: fontH1b; color: clGreyDk }
+    readonly property TStyleFont fontH2bDk:  TStyleFont{ font: fontH2b; color: clGreyDk }
+    readonly property TStyleFont fontH3bDk:  TStyleFont{ font: fontH3b; color: clGreyLt }
+    readonly property TStyleFont fontH3rDk:  TStyleFont{ font: fontH3r; color: clGreyLt }
+    readonly property TStyleFont fontH3rLt:  TStyleFont{ font: fontH3r; color: clWhite }
 
-
-    readonly property TStyleFont fontH1Black:     TStyleFont{ font: fontH1; color: clBlack }
-    readonly property TStyleFont fontH2Black:     TStyleFont{ font: fontH2; color: clBlack }
-    readonly property TStyleFont fontH3Black:     TStyleFont{ font: fontH3; color: clBlack }
-    readonly property TStyleFont fontH4Black:     TStyleFont{ font: fontH4; color: clBlack }
-    readonly property TStyleFont fontH5Black:     TStyleFont{ font: fontH5; color: clBlack }
-    readonly property TStyleFont fontH6Black:     TStyleFont{ font: fontH6; color: clBlack }
-
-    readonly property TStyleFont fontH1White:     TStyleFont{ font: fontH1; color: clWhite }
-    readonly property TStyleFont fontH2White:     TStyleFont{ font: fontH2; color: clWhite }
-    readonly property TStyleFont fontH3White:     TStyleFont{ font: fontH3; color: clWhite }
-    readonly property TStyleFont fontH4White:     TStyleFont{ font: fontH4; color: clWhite }
-    readonly property TStyleFont fontH5White:     TStyleFont{ font: fontH5; color: clWhite }
-    readonly property TStyleFont fontH6White:     TStyleFont{ font: fontH6; color: clWhite }
-
-    readonly property TStyleFont fontLabel:         fontH2White
-    readonly property TStyleFont fontStateLabel:    fontH4White
-    readonly property TStyleFont fontPriceLabel:    TStyleFont{ font: fontH2; color: clYellow }
-
+    readonly property var fonts: [fontH1bDk,fontH2bDk,fontH3bDk,fontH3rDk,fontH3rLt]
 
 //Menu
-    readonly property string menuStart: "MENU_START"
+    readonly property string menuStart: "MENU_CARD"
 
 //Screen
-    readonly property int screenWidth:	1024
-    readonly property int screenHeight:	600
+    readonly property int screenWidth:	272
+    readonly property int screenHeight:	480
 
 //Constants
     readonly property int timerValue: 3000
@@ -66,9 +53,27 @@ QtObject {
 //Styles
     //Elements
     readonly property TStyleItem menu: TStyleItem {
-        bgColors:       [clGrey,clBlack]
+        bgColors:       [clWhite,clWhite]
     }
-
+//Buttons
+    readonly property TStyleItem buttonYellow: TStyleItem {
+        geometry:       [240,56,14]
+        bgColors:       [clYellowLt,clYellowLt]
+        fonts:          [fontH2bDk]
+    }
+    readonly property TStyleItem buttonYellowPressed: TStyleItem {
+        geometry:       [240,56,14]
+        bgColors:       [clYellowDk,clYellowDk]
+        fonts:          [fontH2bDk]
+    }
+    readonly property TStyleItem buttonCard: TStyleItem {
+        geometry:       [64,64,0]
+        bgColors:       [clTransparent,clTransparent]
+        fonts:          [fontH2bDk]
+        useIconGeometry: true
+        iconGeometry:   [64,64,0]
+    }
+/*
     readonly property TStyleItem message: TStyleItem {
         geometry:       [904,480,20]
         bgColors:       [clGrey,clGrey]
@@ -92,6 +97,12 @@ QtObject {
         size:           1
     }
     //Buttons
+
+    readonly property TStyleItem buttonYellow: TStyleItem {
+        geometry:       [100,50,0]
+        bgColors:       [clYellow,clYellow]
+        fonts:          [fontH2White]
+    }
 
     readonly property TStyleItem buttonCard: TStyleItem {
         geometry:       [50,50,0]

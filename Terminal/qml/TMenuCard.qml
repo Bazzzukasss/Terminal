@@ -11,81 +11,110 @@ TMenu{
         property string selectedModeImage: modeImages[cppUIController.cardMode]
         property string cardState: cppUIController.cardState
         property real price: cppUIController.price
+        property string productName: cppUIController.productName
     }
 
+    onVisibleChanged: {
+        if(visible)
+        {
+            cppUIController.setCardMode(0);
+            cppUIController.setCardState("Payment method");
+        }
+    }
+    TRectangle{
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: 150
+        color1: MyStyle.clTransparent
+        color2: MyStyle.clDark
+    }
     Item{
         anchors.fill: parent
-        TButton{
-            id: buttonCardNFC
-            anchors.left: parent.left
-            anchors.top: parent.top
-            icon: data.modeImages[1]
-            styleItem: MyStyle.buttonCard
-            onSignalClicked: root.signalUIAction("actionCardNFCSelected","")
-        }
-
-        TButton{
-            id: buttonCardChip
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.top
-            icon: data.modeImages[2]
-            styleItem: MyStyle.buttonCard
-            onSignalClicked: root.signalUIAction("actionCardChipSelected","")
-        }
-
-        TButton{
-            id: buttonCardStripe
-            anchors.right: parent.right
-            anchors.top: parent.top
-            icon: data.modeImages[3]
-            styleItem: MyStyle.buttonCard
-            onSignalClicked: root.signalUIAction("actionCardStripeSelected","")
-        }
-
         Image{
-            id: modeImage
+            anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: priceLabel.top;
-            anchors.bottomMargin: 10
-            height: 100
-            width: height
-            source: data.selectedModeImage
+            source:"qrc:/img/bg-header.svg"
+        }
+
+        TLabel{
+            id: productNameLabel
+            anchors.top: parent.top
+            anchors.topMargin: 120
+            anchors.horizontalCenter: parent.horizontalCenter
+            styleFont: MyStyle.fonts[2]
+            text: data.productName
         }
 
         TLabel{
             id: priceLabel
-            anchors.centerIn: parent
-            styleFont: MyStyle.fontPriceLabel
+            anchors.top: parent.top
+            anchors.topMargin: 164
+            anchors.horizontalCenter: parent.horizontalCenter
+            styleFont: MyStyle.fonts[0]
             text: data.price
         }
 
         TLabel{
             id: stateLabel
             anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: priceLabel.bottom
-            anchors.topMargin: 10
-            styleFont: MyStyle.fontStateLabel
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 121
+            styleFont: MyStyle.fonts[3]
             text: data.cardState
         }
 
-        TFooter{
-            onSignalStop:{
-                cppUIController.actionPayment("Stop");
-                root.signalUIAction("actionPaymentStop","")
-                root.signalGoTo("MENU_START")
-            }
-
-            onSignalCorrection:{
-                cppUIController.actionPayment("Correction");
-                root.signalUIAction("actionPaymentCorrection","")
-            }
-
-            onSignalOk:{
-                cppUIController.actionPayment("Ok");
-                root.signalUIAction("actionPaymentOk","")
-                root.signalGoTo("MENU_PIN")
+        TButton{
+            id: buttonCardChip
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 32
+            anchors.left: parent.left
+            anchors.leftMargin: 16
+            icon: data.modeImages[2]
+            styleItem: MyStyle.buttonCard
+            onSignalClicked: {
+                cppUIController.setCardMode(2);
+                cppUIController.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
         }
+
+        TButton{
+            id: buttonCardStripe
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 32
+            anchors.horizontalCenter: parent.horizontalCenter
+            icon: data.modeImages[3]
+            styleItem: MyStyle.buttonCard
+            onSignalClicked: {
+                cppUIController.setCardMode(3);
+                cppUIController.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
+            }
+        }
+        TButton{
+            id: buttonCardNFC
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 32
+            anchors.right: parent.right
+            anchors.rightMargin: 16
+            icon: data.modeImages[1]
+            styleItem: MyStyle.buttonCard
+            onSignalClicked: {
+                cppUIController.setCardMode(1);
+                cppUIController.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
+            }
+        }
+
+        TButton{
+            id: buttonPay
+            visible: cppUIController.cardMode != 0
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 24
+            anchors.horizontalCenter: parent.horizontalCenter
+            styleItem: MyStyle.buttonYellow
+            caption: qsTr("Pay") + cppLinguist.emptyString
+            onSignalClicked: root.signalGoTo("MENU_PIN");
+        }
+
     }
 
 }

@@ -11,13 +11,13 @@ TMenu{
             id: input
             anchors.left: parent.left
             anchors.top: parent.top
-            anchors.bottom: footer.top
+            anchors.bottom: parent.bottom
             anchors.right: parent.right
             keyboardType: 2
             isButtonOk: false
             isSmartButtons: false
         }
-
+/*
         TFooter{
             id: footer
             isBackButton: true
@@ -31,5 +31,6 @@ TMenu{
                 input.clearValue()
             }
         }
+        */
     }
 }

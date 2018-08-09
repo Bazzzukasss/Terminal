@@ -63,8 +63,8 @@ Window {
 
 		Component.onCompleted:
 		{
-            message.signalUIAction.connect(root.signalUIAction);
-            message.signalClicked.connect(root.hideMessage);
+            //message.signalUIAction.connect(root.signalUIAction);
+            //message.signalClicked.connect(root.hideMessage);
 			for(var i = 0; i < children.length; ++i)
 			{
 				if(children[i].objectName === "MENU")
@@ -80,12 +80,12 @@ Window {
 		children: [
             TMenuStart				{ id: menuStart; visible: currentMenu === name },
             TMenuCard				{ id: menuCard; visible: currentMenu === name },
-            TMenuPin				{ id: menuPin; visible: currentMenu === name },
+            //TMenuPin				{ id: menuPin; visible: currentMenu === name },
             TMenuSuccess        	{ id: menuSuccess; visible: currentMenu === name },
             TMenuError				{ id: menuError; visible: currentMenu === name },
             TMenuInformation		{ id: menuInformation; visible: currentMenu === name },
-            TMenuWait				{ id: menuWait; visible: currentMenu === name },
-            TMessage                { id: message; visible: false }
+            TMenuWait				{ id: menuWait; visible: currentMenu === name }
+            //TMessage                { id: message; visible: false }
 		]
 	}
 }

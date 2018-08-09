@@ -37,6 +37,11 @@ bool UIControllerTerminal::getCardPresent() const
     return mIsCardPresent;
 }
 
+QString UIControllerTerminal::getProductName() const
+{
+    return mProductName;
+}
+
 void UIControllerTerminal::setCardMode(int cardMode)
 {
     mCardMode = cardMode;
@@ -59,4 +64,10 @@ void UIControllerTerminal::setCardPresent(bool isCardPresent)
 {
     mIsCardPresent = isCardPresent;
     emit signalCardPresentChanged(mIsCardPresent);
+}
+
+void UIControllerTerminal::setProductName(QString productName)
+{
+    mProductName = productName;
+    emit signalProductNameChanged(mProductName);
 }

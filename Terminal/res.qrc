@@ -19,14 +19,12 @@
         <file>fonts/Roboto-Bold.ttf</file>
         <file>qml/TMessage.qml</file>
         <file>img/start-image.png</file>
-        <file>qml/TFooter.qml</file>
         <file>img/card-chip.svg</file>
         <file>img/card-nfc.svg</file>
         <file>img/card-stripe.svg</file>
         <file>qml/TDisabledShade.qml</file>
         <file>img/card-none.svg</file>
         <file>img/error-image.svg</file>
-        <file>img/information-image.svg</file>
         <file>img/success-image.svg</file>
         <file>qml/TEdit.qml</file>
         <file>qml/TInput.qml</file>
@@ -41,5 +39,13 @@
         <file>img/message-request.svg</file>
         <file>img/message-spinner.gif</file>
         <file>img/message-warning.svg</file>
+        <file>img/bg-information.png</file>
+        <file>img/qr.svg</file>
+        <file>img/next-image.svg</file>
+        <file>img/spinner.svg</file>
+        <file>img/bg-header.svg</file>
+        <file>fonts/Roboto-Black.ttf</file>
+        <file>fonts/Roboto-Regular.ttf</file>
+        <file>fonts/Roboto-Thin.ttf</file>
     </qresource>
 </RCC>

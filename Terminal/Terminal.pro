@@ -52,7 +52,6 @@ DISTFILES += \
     qml/TMenuInformation.qml \
     qml/TMenuWait.qml \
     qml/TMessage.qml \
-    qml/TFooter.qml \
     qml/TDisabledShade.qml \
     qml/TEdit.qml \
     qml/TInput.qml \

@@ -24,6 +24,9 @@ int main(int argc, char *argv[])
 
     QFontDatabase fontDB;
     fontDB.addApplicationFont("qrc:/fonts/Roboto-Bold.ttf");
+    fontDB.addApplicationFont("qrc:/fonts/Roboto-Black.ttf");
+    fontDB.addApplicationFont("qrc:/fonts/Roboto-Regular.ttf");
+    fontDB.addApplicationFont("qrc:/fonts/Roboto-Thin.ttf");
 
     QTranslator translator;
     InitializeLinguist(&translator);
