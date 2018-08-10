@@ -64,6 +64,8 @@ TMenu{
             text: data.cardState
         }
 
+
+
         TButton{
             id: buttonCardChip
             anchors.bottom: parent.bottom
@@ -103,6 +105,9 @@ TMenu{
                 cppUIController.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
         }
+
+
+
 
         TButton{
             id: buttonPay

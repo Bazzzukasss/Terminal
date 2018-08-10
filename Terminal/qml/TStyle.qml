@@ -19,7 +19,7 @@ QtObject {
     readonly property color clGrey:         "#dfdfdf"
 
     readonly property color clRedDk:        "#cd080f"
-    readonly property color clRedLt:        "#cd080f"
+    readonly property color clRedLt:        "#f85359"
 
     readonly property color clYellowDk:     "#e6b900"
     readonly property color clYellowLt:     "#ffcd00"
@@ -57,18 +57,30 @@ QtObject {
         bgColors:       [clWhite,clWhite]
     }
     readonly property TStyleItem keyboard: TStyleItem {
-        bgColors:       [clWhite,clWhite]
+        geometry:       [226,305,0]
+        bgColors:       [clTransparent,clTransparent]
         fonts:          [fontH1bDk]
     }
 
-    readonly property TStyleItem edit: TStyleItem {
-        geometry:       [100,80,20]
+
+    readonly property TStyleItem maskEdit: TStyleItem {
+        geometry:       [136,16,0]
         bgColors:       [clWhite,clWhite]
-        fonts:          [fontH1bDk,fontH2bDk]
-        borderColor:    clBlack
-        borderWidth:    1
-        size:           30
     }
+    readonly property TStyleItem maskInicator: TStyleItem {
+        geometry:       [16,16,8]
+        bgColors:       [clWhite,clWhite]
+        borderColor:    clGreyLt
+        borderWidth:    1
+    }
+    readonly property TStyleItem maskInicatorActive: TStyleItem {
+        geometry:       [16,16,8]
+        bgColors:       [clGreyLt,clGreyLt]
+        borderColor:    clGreyLt
+        borderWidth:    1
+    }
+
+
     readonly property TStyleItem line: TStyleItem {
         bgColors:       [clBlack,clWhite]
         size:           1
@@ -98,8 +110,30 @@ QtObject {
         iconGeometry:   [64,64,0]
     }
 
+    readonly property TStyleItem buttonRedRound: TStyleItem {
+        geometry:       [keySize,keySize,keySize/2]
+        bgColors:       [clRedLt,clRedLt]
+        fonts:          [fontH2bDk]
+    }
+    readonly property TStyleItem buttonRedRoundPressed: TStyleItem {
+        geometry:       [keySize,keySize,keySize/2]
+        bgColors:       [clRedDk,clRedDk]
+        fonts:          [fontH2bDk]
+    }
+
+    readonly property TStyleItem buttonYellowRound: TStyleItem {
+        geometry:       [keySize,keySize,keySize/2]
+        bgColors:       [clYellowLt,clYellowLt]
+        fonts:          [fontH2bDk]
+    }
+    readonly property TStyleItem buttonYellowRoundPressed: TStyleItem {
+        geometry:       [keySize,keySize,keySize/2]
+        bgColors:       [clYellowDk,clYellowDk]
+        fonts:          [fontH2bDk]
+    }
+
     //Keyboard
-    readonly property int keySize: 63
+    readonly property int keySize: 64
     readonly property TStyleFont keyFont: fontH1bDk
 
     readonly property TStyleItem buttonEdit: TStyleItem {
@@ -122,13 +156,7 @@ QtObject {
     readonly property TStyleItem buttonKeyboardSpace: buttonKeyboard
     readonly property TStyleItem buttonKeyboardCtrl: buttonKeyboard
     readonly property TStyleItem buttonKeyboardNum: buttonKeyboard
-    readonly property TStyleItem buttonKeyboardNumOk: TStyleItem {
-        geometry:       [keySize,keySize,keySize/2]
-        bgColors:       [clWhite,clWhite]
-        fonts:          [keyFont]
-        borderColor:    clGrey
-        borderWidth:    1
-    }
+    readonly property TStyleItem buttonKeyboardNumOk: buttonKeyboard
     readonly property TStyleItem buttonKeyboardOk: buttonKeyboard
     readonly property TStyleItem buttonKeyboardPressed: TStyleItem {
         geometry:       [keySize,keySize,keySize/2]
@@ -143,13 +171,7 @@ QtObject {
     readonly property TStyleItem buttonKeyboardSpacePressed: buttonKeyboardPressed
     readonly property TStyleItem buttonKeyboardCtrlPressed: buttonKeyboardPressed
     readonly property TStyleItem buttonKeyboardNumPressed: buttonKeyboardPressed
-    readonly property TStyleItem buttonKeyboardNumOkPressed: TStyleItem {
-        geometry:       [keySize,keySize,keySize/2]
-        bgColors:       [clWhite,clWhite]
-        fonts:          [keyFont]
-        borderColor:    clGrey
-        borderWidth:    1
-    }
+    readonly property TStyleItem buttonKeyboardNumOkPressed: buttonKeyboardPressed
     readonly property TStyleItem buttonKeyboardOkPressed: buttonKeyboardPressed
 /*
     readonly property TStyleItem message: TStyleItem {

@@ -8,8 +8,6 @@ TRectangle {
     property int caseType:0
     property int keyboardType:0
     property TStyleItem styleItem: MyStyle.keyboard
-    property string okButtonCaption: "OK"
-    property bool isButtonOk: true
 
     color1: styleItem.bgColors[0]
     color2: styleItem.bgColors[1]
@@ -48,8 +46,8 @@ TRectangle {
         signalButtonClicked(aKey);
     }
 
-    width:  (MyStyle.buttonKeyboard.geometry[0] + 1) * 10
-    height: (MyStyle.buttonKeyboard.geometry[1] + 1) * 4
+    width:  MyStyle.keyboard.geometry[0]//(MyStyle.buttonKeyboard.geometry[0] + 1) * 10
+    height: MyStyle.keyboard.geometry[1]//(MyStyle.buttonKeyboard.geometry[1] + 1) * 4
 
     Component.onCompleted:
     {
@@ -77,7 +75,6 @@ TRectangle {
             Column{
                 anchors.centerIn: parent
                 spacing: 1
-                Item{width: 1; height: 1}
                 Row{
                     id:lettersRow1
                     spacing: 1
@@ -153,7 +150,7 @@ TRectangle {
                     children:[
                         TButtonKeyboard{caption:"123"; styleItem: MyStyle.buttonKeyboardCtrl;styleItemPressed: MyStyle.buttonKeyboardCtrlPressed;onSignalClicked: keyboardType = keyboardType==0 ? 1 : 0},
                         TButtonKeyboard{caption:qsTr("space") + cppLinguist.emptyString; key:" "; styleItem: MyStyle.buttonKeyboardSpace;styleItemPressed: MyStyle.buttonKeyboardSpacePressed},
-                        TButtonKeyboard{caption:root.okButtonCaption; visible: root.isButtonOk; styleItem: MyStyle.buttonKeyboardOk;styleItemPressed: MyStyle.buttonKeyboardOkPressed}
+                        TButtonKeyboard{caption:"OK"; styleItem: MyStyle.buttonKeyboardOk;styleItemPressed: MyStyle.buttonKeyboardOkPressed}
                     ]
                 }
             }
@@ -166,7 +163,6 @@ TRectangle {
             Column{
                 anchors.centerIn: parent
                 spacing: 1
-                Item{width: 1; height: 1}
                 Row{
                     id: numbersRow1
                     spacing: 1
@@ -241,7 +237,7 @@ TRectangle {
                     children:[
                         TButtonKeyboard{caption:"ABC"; styleItem: MyStyle.buttonKeyboardCtrl;styleItemPressed: MyStyle.buttonKeyboardCtrlPressed;onSignalClicked: keyboardType = keyboardType==0 ? 1 : 0},
                         TButtonKeyboard{caption:qsTr("space") + cppLinguist.emptyString; key:" "; styleItem: MyStyle.buttonKeyboardSpace;styleItemPressed: MyStyle.buttonKeyboardSpacePressed},
-                        TButtonKeyboard{caption:root.okButtonCaption; visible: root.isButtonOk; styleItem: MyStyle.buttonKeyboardOk;styleItemPressed: MyStyle.buttonKeyboardOkPressed}
+                        TButtonKeyboard{caption:"OK"; styleItem: MyStyle.buttonKeyboardOk;styleItemPressed: MyStyle.buttonKeyboardOkPressed}
                     ]
                 }
             }
@@ -254,11 +250,10 @@ TRectangle {
             anchors.centerIn: parent
             Column{
                 anchors.centerIn: parent
-                spacing: 1
-                Item{width: 1; height: 1}
+                spacing: 16
                 Row{
                     id: numRow1
-                    spacing: 1
+                    spacing: 17
                     anchors.horizontalCenter: parent.horizontalCenter
                     children:[
                         TButtonKeyboard{caption:"1"; styleItem: MyStyle.buttonKeyboardNum;styleItemPressed: MyStyle.buttonKeyboardNumPressed},
@@ -268,7 +263,7 @@ TRectangle {
                 }
                 Row{
                     id: numRow2
-                    spacing: 1
+                    spacing: 17
                     anchors.horizontalCenter: parent.horizontalCenter
                     children:[
                         TButtonKeyboard{caption:"4"; styleItem: MyStyle.buttonKeyboardNum;styleItemPressed: MyStyle.buttonKeyboardNumPressed},
@@ -278,7 +273,7 @@ TRectangle {
                 }
                 Row{
                     id: numRow3
-                    spacing: 1
+                    spacing: 17
                     anchors.horizontalCenter: parent.horizontalCenter
                     children:[
                         TButtonKeyboard{caption:"7"; styleItem: MyStyle.buttonKeyboardNum;styleItemPressed: MyStyle.buttonKeyboardNumPressed},
@@ -288,12 +283,12 @@ TRectangle {
                 }
                 Row{
                     id: numRow4
-                    spacing: 1
+                    spacing: 17
                     anchors.horizontalCenter: parent.horizontalCenter
                     children:[
-                        TButtonKeyboard{caption:Qt.locale().decimalPoint; styleItem: MyStyle.buttonKeyboardNum;styleItemPressed: MyStyle.buttonKeyboardNumPressed},
+                        TButtonKeyboard{caption:"<"; key:"<"; styleItem: MyStyle.buttonKeyboardNum;styleItemPressed: MyStyle.buttonKeyboardNumPressed},
                         TButtonKeyboard{caption:"0"; styleItem: MyStyle.buttonKeyboardNum;styleItemPressed: MyStyle.buttonKeyboardNumPressed},
-                        TButtonKeyboard{caption:root.okButtonCaption; visible: root.isButtonOk; styleItem: MyStyle.buttonKeyboardNumOk;styleItemPressed: MyStyle.buttonKeyboardNumOkPressed}
+                        TButtonKeyboard{caption:"OK"; styleItem: MyStyle.buttonKeyboardNumOk;styleItemPressed: MyStyle.buttonKeyboardNumOkPressed}
                     ]
                 }
             }

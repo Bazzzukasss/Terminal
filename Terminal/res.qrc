@@ -26,7 +26,6 @@
         <file>img/card-none.svg</file>
         <file>img/error-image.svg</file>
         <file>img/success-image.svg</file>
-        <file>qml/TEdit.qml</file>
         <file>qml/TInput.qml</file>
         <file>qml/TVLine.qml</file>
         <file>qml/TButtonKeyboard.qml</file>
@@ -47,5 +46,7 @@
         <file>fonts/Roboto-Black.ttf</file>
         <file>fonts/Roboto-Regular.ttf</file>
         <file>fonts/Roboto-Thin.ttf</file>
+        <file>qml/TMaskEdit.qml</file>
+        <file>qml/TMaskIndicator.qml</file>
     </qresource>
 </RCC>

@@ -57,7 +57,9 @@ DISTFILES += \
     qml/TInput.qml \
     qml/TVLine.qml \
     qml/TButtonKeyboard.qml \
-    qml/TLine.qml
+    qml/TLine.qml \
+    qml/TMaskEdit.qml \
+    qml/TMaskIndicator.qml
 
 HEADERS += \
     cpp/Linguist.h \

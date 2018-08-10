@@ -62,7 +62,9 @@ Item {
         }
     }
 
-    TDisabledShade {}
+    TDisabledShade {
+        radius: rect.radius
+    }
 
     MouseArea {
          anchors.fill: parent;

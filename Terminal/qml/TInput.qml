@@ -6,11 +6,9 @@ Item {
     objectName: "INPUT"
     property string name: "INPUT"
     property string value
+    property int maxValueLength: 4
     property string currentMenu
     property alias keyboardType: keyboard.keyboardType
-    property alias okButtonCaption: keyboard.okButtonCaption
-    property alias isButtonOk: keyboard.isButtonOk
-    property alias isSmartButtons: edit.isSmartButtons
 
     signal signalApplyValue(string aValue);
 
@@ -42,7 +40,6 @@ Item {
                 break;
 
             case "OK":
-            case okButtonCaption:
                 signalApplyValue(value);
                 break;
 
@@ -51,7 +48,8 @@ Item {
                 break;
 
             default:
-                value += aKey
+                if(value.length < maxValueLength)
+                    value += aKey
                 break;
         }
         edit.text = value;
@@ -59,18 +57,18 @@ Item {
 
     Component.onCompleted: edit.text = value;
 
-    Column{
-        anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: MyStyle.isBigScreen ? 60 : 26
-        TEdit{
+    Item{
+        anchors.fill: parent
+
+        TMaskEdit{
             id: edit
-            onSignalClear: root.clearValue()
-            onSignalBackspace: root.backSpace()
-            mode: keyboardType === 2 ? 1 : 0
+            anchors.bottom: keyboard.top
+            anchors.bottomMargin: 40
+            anchors.horizontalCenter: parent.horizontalCenter
         }
         TKeyboard{
             id: keyboard
+            anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             onSignalButtonClicked: root.keyboardButtonClicked(aKey);
 
