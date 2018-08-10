@@ -8,7 +8,8 @@
 
 class QQuickWindow;
 class QQmlApplicationEngine;
-class UIController;
+class UIAssistant;
+class UIBackend;
 
 typedef std::function<void(QVariant const&)> Handler;
 typedef QMap<QString,Handler> HandlerMap;
@@ -18,7 +19,7 @@ class UILogic : public QObject
     Q_OBJECT
 
 public:
-    explicit UILogic(QQmlApplicationEngine* apEngine, UIController* apUIController = nullptr, QObject *parent = nullptr);
+    explicit UILogic(QQmlApplicationEngine* apEngine, UIAssistant* apUIAssistant, UIBackend* apUIBackend = nullptr, QObject *parent = nullptr);
 
     QVariant getQMLProperty(QString const& aParamID);
     void setQMLProperty(QString const& aParamID, QVariant const& aValue);
@@ -35,7 +36,8 @@ protected:
     QQmlApplicationEngine* mpEngine;
     QQuickWindow* mpQuickWindow;
     Messenger* mpMessenger;
-    UIController* mpUIController;
+    UIAssistant* mpUIAssistant;
+    UIBackend* mpUIBackend;
     HandlerMap  mActionHandlers;
     HandlerMap  mParamHandlers;
 

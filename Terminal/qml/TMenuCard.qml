@@ -8,17 +8,17 @@ TMenu{
     QtObject{
         id: data
         property var modeImages: ["qrc:/img/card-none.svg","qrc:/img/card-nfc.svg","qrc:/img/card-chip.svg","qrc:/img/card-stripe.svg"]
-        property string selectedModeImage: modeImages[cppUIController.cardMode]
-        property string cardState: cppUIController.cardState
-        property real price: cppUIController.price
-        property string productName: cppUIController.productName
+        property string selectedModeImage: modeImages[cppUIBackend.cardMode]
+        property string cardState: cppUIBackend.cardState
+        property real price: cppUIBackend.price
+        property string productName: cppUIBackend.productName
     }
 
     onVisibleChanged: {
         if(visible)
         {
-            cppUIController.setCardMode(0);
-            cppUIController.setCardState("Payment method");
+            cppUIBackend.setCardMode(0);
+            cppUIBackend.setCardState("Payment method");
         }
     }
     TRectangle{
@@ -75,8 +75,8 @@ TMenu{
             icon: data.modeImages[2]
             styleItem: MyStyle.buttonCard
             onSignalClicked: {
-                cppUIController.setCardMode(2);
-                cppUIController.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
+                cppUIBackend.setCardMode(2);
+                cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
         }
 
@@ -88,8 +88,8 @@ TMenu{
             icon: data.modeImages[3]
             styleItem: MyStyle.buttonCard
             onSignalClicked: {
-                cppUIController.setCardMode(3);
-                cppUIController.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
+                cppUIBackend.setCardMode(3);
+                cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
         }
         TButton{
@@ -101,8 +101,8 @@ TMenu{
             icon: data.modeImages[1]
             styleItem: MyStyle.buttonCard
             onSignalClicked: {
-                cppUIController.setCardMode(1);
-                cppUIController.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
+                cppUIBackend.setCardMode(1);
+                cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
         }
 
@@ -111,7 +111,7 @@ TMenu{
 
         TButton{
             id: buttonPay
-            visible: cppUIController.cardMode != 0
+            visible: cppUIBackend.cardMode != 0
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 24
             anchors.horizontalCenter: parent.horizontalCenter

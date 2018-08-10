@@ -61,8 +61,6 @@ QtObject {
         bgColors:       [clTransparent,clTransparent]
         fonts:          [fontH1bDk]
     }
-
-
     readonly property TStyleItem maskEdit: TStyleItem {
         geometry:       [136,16,0]
         bgColors:       [clWhite,clWhite]
@@ -79,8 +77,6 @@ QtObject {
         borderColor:    clGreyLt
         borderWidth:    1
     }
-
-
     readonly property TStyleItem line: TStyleItem {
         bgColors:       [clBlack,clWhite]
         size:           1
@@ -109,7 +105,6 @@ QtObject {
         useIconGeometry: true
         iconGeometry:   [64,64,0]
     }
-
     readonly property TStyleItem buttonRedRound: TStyleItem {
         geometry:       [keySize,keySize,keySize/2]
         bgColors:       [clRedLt,clRedLt]
@@ -142,7 +137,6 @@ QtObject {
         iconColor:      clDark
         fonts:          [keyFont]
     }
-
     readonly property TStyleItem buttonKeyboard: TStyleItem {
         geometry:       [keySize,keySize,keySize/2]
         bgColors:       [clWhite,clWhite]

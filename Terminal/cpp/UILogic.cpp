@@ -3,16 +3,18 @@
 #include <QQuickWindow>
 #include <QQmlProperty>
 #include <QDebug>
-#include "UILogic.h"
 #include "Linguist.h"
 #include "Messenger.h"
-#include "UIController.h"
+#include "UILogic.h"
+#include "UIAssistant.h"
+#include "UIBackend.h"
 
-UILogic::UILogic(QQmlApplicationEngine *apEngine, UIController *apUIController, QObject *parent)
+UILogic::UILogic(QQmlApplicationEngine *apEngine, UIAssistant *apUIAssistant, UIBackend *apUIBackend, QObject *parent)
     : QObject(parent)
     , mpEngine(apEngine)
     , mpMessenger (new Messenger(this))
-    , mpUIController(apUIController)
+    , mpUIAssistant(apUIAssistant)
+    , mpUIBackend(apUIBackend)
 {   
     connect(mpEngine,&QQmlApplicationEngine::objectCreated,[&](){
         mpQuickWindow = qobject_cast<QQuickWindow*>(mpEngine->rootObjects().value(0));
@@ -26,11 +28,15 @@ UILogic::UILogic(QQmlApplicationEngine *apEngine, UIController *apUIController, 
     });
 
     setContextProperty("cppLinguist", Linguist::getInstance());
-    if(mpUIController != nullptr)
+
+    if(mpUIBackend != nullptr)
     {
-        setContextProperty("cppUIController", mpUIController);
-        mpUIController->setUILogic(this);
+        setContextProperty("cppUIBackend", mpUIBackend);
+        mpUIBackend->setUILogic(this);
     }
+
+    if(mpUIAssistant != nullptr)
+        setContextProperty("cppUIAssistant", mpUIAssistant);
 }
 
 void UILogic::initializeProperties()

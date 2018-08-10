@@ -1,14 +1,14 @@
-#ifndef UICONTROLLERTERMINAL_H
-#define UICONTROLLERTERMINAL_H
+#ifndef UIBACKENDTERMINAL_H
+#define UIBACKENDTERMINAL_H
 
-#include "UIController.h"
+#include "UIBackend.h"
 
-class UIControllerTerminal : public UIController
+class UIBackendTerminal : public UIBackend
 {
     Q_OBJECT
 
 public:
-    UIControllerTerminal(QObject* parent = nullptr);
+    UIBackendTerminal(QObject* parent = nullptr);
     Q_INVOKABLE bool isPinGood(const QString& aPin);
     Q_INVOKABLE void actionPayment(const QString& aAction);
 
@@ -46,4 +46,4 @@ private:
     QString mProductName{"Product Name"};
 };
 
-#endif // UICONTROLLERTERMINAL_H
+#endif // UIBACKENDTERMINAL_H
