@@ -9,8 +9,7 @@ UIBackendTerminal::UIBackendTerminal(QObject *parent)
 
 bool UIBackendTerminal::isPinGood(const QString &aPin)
 {
-    mpUILogic->showMessage(Messenger::MT_WAITING,"Data in proccess...",3000);
-    return aPin == "123";
+    return aPin == "1111";
 }
 
 void UIBackendTerminal::actionPayment(const QString &aAction)

@@ -21,6 +21,16 @@ TMenu{
                     to: 360
                     duration: 2000
                 }
+            onRotationChanged: {
+                if(rotation > 350 && visible)
+                {
+                    if(cppUIBackend.isPinGood("1111"))
+                        root.signalGoTo("MENU_SUCCESS");
+                    else
+                        root.signalGoTo("MENU_ERROR");
+                }
+            }
+
         }
         TLabel{
             anchors.horizontalCenter: parent.horizontalCenter

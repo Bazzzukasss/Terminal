@@ -12,6 +12,8 @@ TMenu{
         property string cardState: cppUIBackend.cardState
         property real price: cppUIBackend.price
         property string productName: cppUIBackend.productName
+        property var buttons: [buttonCardChip,buttonCardStripe,buttonCardNFC]
+        property var selectedButton: buttons[cppUIBackend.cardMode-1]
     }
 
     onVisibleChanged: {
@@ -68,45 +70,40 @@ TMenu{
 
         TButton{
             id: buttonCardChip
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 32
-            anchors.left: parent.left
-            anchors.leftMargin: 16
+            visible: cppUIBackend.cardMode == 0 || cppUIBackend.cardMode == 1
+            x: 16
+            y: 384
             icon: data.modeImages[2]
-            styleItem: MyStyle.buttonCard
-            onSignalClicked: {
-                cppUIBackend.setCardMode(2);
-                cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
-            }
-        }
-
-        TButton{
-            id: buttonCardStripe
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 32
-            anchors.horizontalCenter: parent.horizontalCenter
-            icon: data.modeImages[3]
-            styleItem: MyStyle.buttonCard
-            onSignalClicked: {
-                cppUIBackend.setCardMode(3);
-                cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
-            }
-        }
-        TButton{
-            id: buttonCardNFC
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 32
-            anchors.right: parent.right
-            anchors.rightMargin: 16
-            icon: data.modeImages[1]
             styleItem: MyStyle.buttonCard
             onSignalClicked: {
                 cppUIBackend.setCardMode(1);
                 cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
         }
-
-
+        TButton{
+            id: buttonCardStripe
+            visible: cppUIBackend.cardMode == 0 || cppUIBackend.cardMode == 2
+            x: 104
+            y: 384
+            icon: data.modeImages[3]
+            styleItem: MyStyle.buttonCard
+            onSignalClicked: {
+                cppUIBackend.setCardMode(2);
+                cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
+            }
+        }
+        TButton{
+            id: buttonCardNFC
+            visible: cppUIBackend.cardMode == 0 || cppUIBackend.cardMode == 3
+            x: 192
+            y: 384
+            icon: data.modeImages[1]
+            styleItem: MyStyle.buttonCard
+            onSignalClicked: {
+                cppUIBackend.setCardMode(3);
+                cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
+            }
+        }
 
 
         TButton{
@@ -120,6 +117,17 @@ TMenu{
             onSignalClicked: root.signalGoTo("MENU_PIN");
         }
 
+        states:[
+            State { name: "nocard"; when: cppUIBackend.cardMode == 0;
+                PropertyChanges { target: data.buttons[0]; x:16; y: 384 }
+                PropertyChanges { target: data.buttons[1]; x:104; y: 384 }
+                PropertyChanges { target: data.buttons[2]; x:192; y: 384 }
+            },
+            State { name: "card"; when: cppUIBackend.cardMode != 0;
+                PropertyChanges { target: data.selectedButton; x:104; y: 260 }
+
+            }
+        ]
     }
 
 }

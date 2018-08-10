@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     fontDB.addApplicationFont("qrc:/fonts/Roboto-Thin.ttf");
 
     QTranslator translator;
-    InitializeLinguist(&translator);
+    //InitializeLinguist(&translator);
 
     UIAssistant uiAssistant;
     UIBackendTerminal uiBackend;
