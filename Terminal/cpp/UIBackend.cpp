@@ -22,14 +22,19 @@ void UIBackend::initialize()
     connect(mpCore, &Core::signalProductPriceChanged,   this, &UIBackend::setProductPrice);
 }
 
-bool UIBackend::checkPinCode(const QString&)
+bool UIBackend::checkPinCode(const QString& aPinCode)
 {
-    return false;
+    return mpCore->checkPinCode(aPinCode);
 }
 
 bool UIBackend::doPayment()
 {
-    return false;
+    return mpCore->doPayment();
+}
+
+bool UIBackend::refreshData()
+{
+    return mpCore->refreshData();
 }
 
 int UIBackend::getCardMode() const

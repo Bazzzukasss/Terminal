@@ -16,6 +16,7 @@ public:
 
     Q_INVOKABLE virtual bool checkPinCode(const QString& aPinCode);
     Q_INVOKABLE virtual bool doPayment();
+    Q_INVOKABLE virtual bool refreshData();
 
     Q_PROPERTY(int cardMode READ getCardMode WRITE setCardMode NOTIFY signalCardModeChanged)
     Q_PROPERTY(QString cardState READ getCardState WRITE setCardState NOTIFY signalCardStateChanged)
