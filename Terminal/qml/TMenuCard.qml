@@ -20,7 +20,7 @@ TMenu{
     onVisibleChanged: {
         if(visible)
         {
-            cppUIBackend.setCardMode(0);
+            //cppUIBackend.setCardMode(0);
             cppUIBackend.setCardState("Payment method");
         }
     }
@@ -60,6 +60,7 @@ TMenu{
 
         TLabel{
             id: stateLabel
+            visible: cppUIBackend.cardMode == 0 || (cppUIBackend.cardMode != 0 && buttonPay.visible)
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 121
@@ -80,8 +81,8 @@ TMenu{
                 cppUIBackend.setCardMode(1);
                 cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
-            Behavior on x { NumberAnimation { duration: data.duration } }
-            Behavior on y { NumberAnimation { duration: data.duration } }
+            Behavior on x { enabled: cppUIBackend.cardMode==0; NumberAnimation { duration: data.duration } }
+            Behavior on y { enabled: cppUIBackend.cardMode==0; NumberAnimation { duration: data.duration } }
         }
         TButton{
             id: buttonCardStripe
@@ -94,8 +95,8 @@ TMenu{
                 cppUIBackend.setCardMode(2);
                 cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
-            Behavior on x { NumberAnimation { duration: data.duration } }
-            Behavior on y { NumberAnimation { duration: data.duration } }
+            Behavior on x { enabled: cppUIBackend.cardMode==0; NumberAnimation { duration: data.duration } }
+            Behavior on y { enabled: cppUIBackend.cardMode==0; NumberAnimation { duration: data.duration } }
         }
         TButton{
             id: buttonCardNFC
@@ -108,10 +109,9 @@ TMenu{
                 cppUIBackend.setCardMode(3);
                 cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
-            Behavior on x { NumberAnimation { duration: data.duration } }
-            Behavior on y { NumberAnimation { duration: data.duration } }
+            Behavior on x { enabled: cppUIBackend.cardMode==0; NumberAnimation { duration: data.duration } }
+            Behavior on y { enabled: cppUIBackend.cardMode==0; NumberAnimation { duration: data.duration } }
         }
-
 
         TButton{
             id: buttonPay
@@ -122,20 +122,8 @@ TMenu{
             styleItem: MyStyle.buttonYellow
             caption: qsTr("Pay") + cppLinguist.emptyString
             onSignalClicked: root.signalGoTo("MENU_PIN");
-            Behavior on visible { NumberAnimation { duration: data.duration*2 } }
+            Behavior on visible { enabled: cppUIBackend.cardMode==0; NumberAnimation { duration: data.duration*2 } }
         }
-/*
-        states:[
-            State { name: "nocard"; when: cppUIBackend.cardMode == 0;
-                PropertyChanges { target: data.buttons[0]; x:16; y: 384 }
-                PropertyChanges { target: data.buttons[1]; x:104; y: 384 }
-                PropertyChanges { target: data.buttons[2]; x:192; y: 384 }
-            },
-            State { name: "card"; when: cppUIBackend.cardMode != 0;
-                PropertyChanges { target: data.selectedButton; x:104; y: 260 }
-
-            }
-        ]*/
     }
 
 }
