@@ -20,12 +20,12 @@ Item {
     anchors.fill: parent
 
 
-    function addButton( aCaption, aKey, aStyleItem, aStyleItemPressed, aWidth, aAction)
+    function addButton( aCaption, aKey, aStyleItem, aStyleItemPressed, aAction)
     {
         var component = Qt.createComponent("TButton.qml");
         if (component.status === Component.Ready)
         {
-            var button = component.createObject( buttonsRow, { "caption": aCaption, "key": aKey, "action": aAction, "width": aWidth,  "styleItem": aStyleItem, "styleItemPressed": aStyleItemPressed } );
+            var button = component.createObject( buttonsConteiner, { "caption": aCaption, "key": aKey, "action": aAction, "styleItem": aStyleItem, "styleItemPressed": aStyleItemPressed } );
             if (button === null)
                 console.log("Error creating button")
             else
@@ -41,8 +41,8 @@ Item {
 
     function deleteButtons()
     {
-        for(var i = 0; i < buttonsRow.children.length; ++i)
-            buttonsRow.children[i].destroy();
+        for(var i = 0; i < buttonsConteiner.children.length; ++i)
+            buttonsConteiner.children[i].destroy();
     }
 
     function setData(aDataMap, aButtonsList)
@@ -52,7 +52,6 @@ Item {
         text = aDataMap["text"]
         icon = aDataMap["icon"]
 
-        var bWidth = messageRect.width / (aButtonsList.length + 1)
         for(var i = 0; i < aButtonsList.length; ++i)
         {
             var propertyMap = aButtonsList[i]
@@ -64,7 +63,7 @@ Item {
             var bStyleItem = buttonStyles[bMode]
             var bStyleItemPressed = buttonStylesPressed[bMode]
 
-            addButton(bCaption, bKey, bStyleItem, bStyleItemPressed, bWidth, bAction)
+            addButton(bCaption, bKey, bStyleItem, bStyleItemPressed, bAction)
         }
     }
 
@@ -89,33 +88,50 @@ Item {
             border.width: styleItem.borderWidth
             radius: styleItem.geometry[2]
 
-            Column{
+            AnimatedImage{
+                id: img
+                visible: source!=""
                 anchors.centerIn: parent
-                spacing: styleItem.size
-                AnimatedImage{
-                    id: img
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    playing: true
-                }
+                playing: true
+            }
 
-                TLabel{
-                    id: labelCaption
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    styleFont:styleItem.fonts[0]
-                }
+            Image{
+                id: imgSpinner
+                visible: !img.visible
+                anchors.centerIn: parent
+                width: 128
+                height: 128
+                source:"qrc:/img/spinner.svg"
+                RotationAnimation on rotation {
+                        loops: Animation.Infinite
+                        from: 0
+                        to: 360
+                        duration: 2000
+                    }
+            }
+            TLabel{
+                id: labelCaption
+                visible: text!=""
+                anchors.bottom: labelMessage.top
+                anchors.horizontalCenter: parent.horizontalCenter
+                styleFont:styleItem.fonts[0]
+            }
 
-                TLabel{
-                    id: labelMessage
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    styleFont:styleItem.fonts[1]
-                    text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla \nplacerat purus turpis, ac porttitor enim sodales quis."
-                }
-                Item{height: 1;width:1}
-                Row{
-                    id: buttonsRow
-                    spacing:50
-                    anchors.horizontalCenter: parent.horizontalCenter
-                }
+            TLabel{
+                id: labelMessage
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.bottom: buttonsConteiner.top
+                anchors.bottomMargin: 16
+                styleFont:styleItem.fonts[1]
+                text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nulla \nplacerat purus turpis, ac porttitor enim sodales quis."
+            }
+
+            Column{
+                id: buttonsConteiner
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 24
+                anchors.horizontalCenter: parent.horizontalCenter
+                spacing: 8
             }
         }
     }

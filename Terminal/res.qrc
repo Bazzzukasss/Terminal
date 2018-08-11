@@ -23,7 +23,6 @@
         <file>img/card-nfc.svg</file>
         <file>img/card-stripe.svg</file>
         <file>qml/TDisabledShade.qml</file>
-        <file>img/card-none.svg</file>
         <file>img/error-image.svg</file>
         <file>img/success-image.svg</file>
         <file>qml/TInput.qml</file>
@@ -36,7 +35,6 @@
         <file>img/message-done.svg</file>
         <file>img/message-info.svg</file>
         <file>img/message-request.svg</file>
-        <file>img/message-spinner.gif</file>
         <file>img/message-warning.svg</file>
         <file>img/bg-information.png</file>
         <file>img/qr.svg</file>
@@ -48,5 +46,9 @@
         <file>fonts/Roboto-Thin.ttf</file>
         <file>qml/TMaskEdit.qml</file>
         <file>qml/TMaskIndicator.qml</file>
+        <file>img/message-alert.svg</file>
+        <file>img/message-error.svg</file>
+        <file>img/message-proccessing.gif</file>
+        <file>img/message-waiting.gif</file>
     </qresource>
 </RCC>

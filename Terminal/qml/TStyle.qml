@@ -42,7 +42,7 @@ QtObject {
     readonly property var fonts: [fontH1bDk,fontH2bDk,fontH3bDk,fontH3rDk,fontH3rLt]
 
 //Menu
-    readonly property string menuStart: "MENU_CARD"
+    readonly property string menuStart: "MENU_PIN"
 
 //Screen
     readonly property int screenWidth:	272
@@ -53,6 +53,11 @@ QtObject {
 
 //Styles
     //Elements
+    readonly property TStyleItem message: TStyleItem {
+        geometry:       [screenWidth,screenHeight,0]
+        bgColors:       [clYellowLt,clYellowLt]
+        fonts:          [fontH1bDk,fontH3rDk]
+    }
     readonly property TStyleItem menu: TStyleItem {
         bgColors:       [clWhite,clWhite]
     }
@@ -167,34 +172,10 @@ QtObject {
     readonly property TStyleItem buttonKeyboardNumPressed: buttonKeyboardPressed
     readonly property TStyleItem buttonKeyboardNumOkPressed: buttonKeyboardPressed
     readonly property TStyleItem buttonKeyboardOkPressed: buttonKeyboardPressed
-/*
-    //Message
-    readonly property TStyleItem message: TStyleItem {
-        geometry:       [904,480,20]
-        bgColors:       [clGrey,clGrey]
-        fonts:          [fontH2Black,fontH2White]
-        size:           20
-    }
 
-    readonly property TStyleItem buttonMessageImportant: TStyleItem {
-        geometry:       [355,100,50]
-        bgColors:       [clRed,clRed]
-        fonts:          [fontH2White]
-    }
-    readonly property TStyleItem buttonMessageStandart: TStyleItem {
-        geometry:       [355,100,50]
-        bgColors:       [clBlue,clBlue]
-        fonts:          [fontH2White]
-    }
-    readonly property TStyleItem buttonMessageImportantPressed: TStyleItem {
-        geometry:       [355,100,50]
-        bgColors:       [clGrey,clGrey]
-        fonts:          [fontH2White]
-    }
-    readonly property TStyleItem buttonMessageStandartPressed: TStyleItem {
-        geometry:       [355,100,50]
-        bgColors:       [clGrey,clGrey]
-        fonts:          [fontH2White]
-    }
-    */
+    //Message
+    readonly property TStyleItem buttonMessageImportant: buttonYellowPressed
+    readonly property TStyleItem buttonMessageStandart: buttonYellowPressed
+    readonly property TStyleItem buttonMessageImportantPressed: buttonYellow
+    readonly property TStyleItem buttonMessageStandartPressed: buttonYellow
  }

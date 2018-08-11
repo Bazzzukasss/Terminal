@@ -10,9 +10,7 @@ MessageButton ButtonYes     = {"Yes","Yes",MessageButton::BT_STANDART,""};
 MessageButton ButtonNo      = {"No","No",MessageButton::BT_STANDART,""};
 MessageButton ButtonCancel  = {"Cancel","No",MessageButton::BT_HIGHLITED,""};
 MessageButton ButtonApply   = {"Apply","Yes",MessageButton::BT_STANDART,""};
-MessageButton ButtonStop    = {"Stop","Ok",MessageButton::BT_HIGHLITED,"actionPlatformStop"};
-MessageButton ButtonStopPlatform    = {"Stop","Ok",MessageButton::BT_HIGHLITED,"actionPlatformStop"};
-MessageButton ButtonStopMovement    = {"Stop","Ok",MessageButton::BT_HIGHLITED,"actionStopMovement"};
+MessageButton ButtonStop    = {"Stop","Ok",MessageButton::BT_HIGHLITED,""};
 
 Messenger::Messenger(QObject* parent /*= 0*/) 
 	: QObject(parent)
@@ -31,33 +29,33 @@ Messenger::Messenger(QObject* parent /*= 0*/)
 QString Messenger::showMessage(MessageType aType, const QString aText, int aShowingTime /*= -1*/, bool aIsNeedToWaitAnswer)
 {
     QString icons[] = { mSourcePath+"message-info.svg",
-                        mSourcePath+"message-warning.svg",
-                        mSourcePath+"message-request.svg",
-                        mSourcePath+"message-spinner.gif",
-                        mSourcePath+"message-error.svg",
-                        mSourcePath+"message-warning.svg",
                         mSourcePath+"message-done.svg",
-                        mSourcePath+"message-spinner.gif",
+                        mSourcePath+"message-warning.svg",
+                        mSourcePath+"message-alert.svg",
+                        mSourcePath+"message-request.svg",
+                        mSourcePath+"message-error.svg",
+                        "",//mSourcePath+"message-processing.gif",
+                        "",//mSourcePath+"message-waiting.gif",
                         };
 
-    QString captions[] = {  tr("Information"),
-                            tr("Warning"),
-                            tr("Request"),
-                            tr("Processing..."),
-                            tr("Error"),
-                            tr("Information"),
-                            tr("Welldone"),
-                            tr("Processing...")
+    QString captions[] = {  tr(""),
+                            tr(""),
+                            tr(""),
+                            tr(""),
+                            tr(""),
+                            tr(""),
+                            tr(""),
+                            tr("")
                             };
 
     QList<MessageButton> buttons[] = {
         {ButtonOk},
-        {ButtonCancel,ButtonOk},
-        {ButtonCancel,ButtonOk},
-        {ButtonStop},
+        {ButtonOk},
+        {ButtonOk},
+        {ButtonOk},
         {ButtonCancel,ButtonOk},
         {ButtonOk},
-        {ButtonCancel,ButtonApply},
+        {},
         {}
     };
 

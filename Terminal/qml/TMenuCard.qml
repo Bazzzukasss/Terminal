@@ -20,7 +20,7 @@ TMenu{
     onVisibleChanged: {
         if(visible)
         {
-            //cppUIBackend.setCardMode(0);
+            cppUIBackend.setCardMode(0);
             cppUIBackend.setCardState("Payment method");
         }
     }

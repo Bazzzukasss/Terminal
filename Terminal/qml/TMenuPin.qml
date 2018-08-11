@@ -4,6 +4,7 @@ import CustomControls 1.0
 TMenu{
     id: root
     name:"MENU_PIN"
+    onVisibleChanged: input.clearValue();
 
     Item{
         anchors.fill: parent
@@ -54,7 +55,12 @@ TMenu{
                 icon: "qrc:/img/next-image.svg"
                 styleItem: MyStyle.buttonYellowRound
                 styleItemPressed: MyStyle.buttonYellowRoundPressed
-                onSignalClicked: root.signalGoTo("MENU_WAIT")
+                onSignalClicked: {
+                    if(cppUIBackend.isPinGood(input.value))
+                        root.signalGoTo("MENU_SUCCESS");
+                    else
+                        root.signalGoTo("MENU_ERROR");
+                }
             }
         }
     }
