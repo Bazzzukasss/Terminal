@@ -13,6 +13,15 @@ Page {
     signal signalGoTo(string name)
     signal signalUIParameterChaged(string name, variant value)
     signal signalUIAction(string name, variant value)
+    signal signalOnEnter(string name)
+    signal signalOnExit(string name)
+
+    onVisibleChanged: {
+        if(visible)
+            signalOnEnter(name)
+        else
+            signalOnExit(name)
+    }
 
     background: TRectangle{
         color1: styleItem.bgColors[0]

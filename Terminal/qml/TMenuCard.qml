@@ -14,6 +14,7 @@ TMenu{
         property string productName: cppUIBackend.productName
         property var buttons: [buttonCardChip,buttonCardStripe,buttonCardNFC]
         property var selectedButton: buttons[cppUIBackend.cardMode-1]
+        property int duration: 500
     }
 
     onVisibleChanged: {
@@ -71,38 +72,44 @@ TMenu{
         TButton{
             id: buttonCardChip
             visible: cppUIBackend.cardMode == 0 || cppUIBackend.cardMode == 1
-            x: 16
-            y: 384
+            x: cppUIBackend.cardMode == 1 ? 104 : 16
+            y: cppUIBackend.cardMode == 1 ? 260 : 384
             icon: data.modeImages[2]
             styleItem: MyStyle.buttonCard
             onSignalClicked: {
                 cppUIBackend.setCardMode(1);
                 cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
+            Behavior on x { NumberAnimation { duration: data.duration } }
+            Behavior on y { NumberAnimation { duration: data.duration } }
         }
         TButton{
             id: buttonCardStripe
             visible: cppUIBackend.cardMode == 0 || cppUIBackend.cardMode == 2
-            x: 104
-            y: 384
+            x: cppUIBackend.cardMode == 2 ? 104 : 104
+            y: cppUIBackend.cardMode == 2 ? 260 : 384
             icon: data.modeImages[3]
             styleItem: MyStyle.buttonCard
             onSignalClicked: {
                 cppUIBackend.setCardMode(2);
                 cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
+            Behavior on x { NumberAnimation { duration: data.duration } }
+            Behavior on y { NumberAnimation { duration: data.duration } }
         }
         TButton{
             id: buttonCardNFC
             visible: cppUIBackend.cardMode == 0 || cppUIBackend.cardMode == 3
-            x: 192
-            y: 384
+            x: cppUIBackend.cardMode == 3 ? 104 : 192
+            y: cppUIBackend.cardMode == 3 ? 260 : 384
             icon: data.modeImages[1]
             styleItem: MyStyle.buttonCard
             onSignalClicked: {
                 cppUIBackend.setCardMode(3);
                 cppUIBackend.setCardState(qsTr("Selected payment method")+cppLinguist.emptyString);
             }
+            Behavior on x { NumberAnimation { duration: data.duration } }
+            Behavior on y { NumberAnimation { duration: data.duration } }
         }
 
 
@@ -115,8 +122,9 @@ TMenu{
             styleItem: MyStyle.buttonYellow
             caption: qsTr("Pay") + cppLinguist.emptyString
             onSignalClicked: root.signalGoTo("MENU_PIN");
+            Behavior on visible { NumberAnimation { duration: data.duration*2 } }
         }
-
+/*
         states:[
             State { name: "nocard"; when: cppUIBackend.cardMode == 0;
                 PropertyChanges { target: data.buttons[0]; x:16; y: 384 }
@@ -127,7 +135,7 @@ TMenu{
                 PropertyChanges { target: data.selectedButton; x:104; y: 260 }
 
             }
-        ]
+        ]*/
     }
 
 }

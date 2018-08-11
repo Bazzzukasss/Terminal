@@ -63,3 +63,12 @@
 /build-Terminal-Desktop_Qt_5_10_0_MSVC2015_64bit-Debug/debug/UIAssistant.obj
 /build-Terminal-Desktop_Qt_5_10_0_MSVC2015_64bit-Debug/debug/UIBackend.obj
 /build-Terminal-Desktop_Qt_5_10_0_MSVC2015_64bit-Debug/debug/UIBackendTerminal.obj
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/moc_UIAssistant.cpp
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/moc_UIAssistant.o
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/moc_UIBackend.cpp
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/moc_UIBackend.o
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/moc_UIBackendTerminal.cpp
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/moc_UIBackendTerminal.o
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/UIAssistant.o
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/UIBackend.o
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/UIBackendTerminal.o

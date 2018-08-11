@@ -8,6 +8,8 @@ Window {
 	signal signalUIParameterChaged(string name, variant value)
 	signal signalUIAction(string name, variant value)
     signal signalMessageAnswer(string button);
+    signal signalOnEnterMenu(string name)
+    signal signalOnExitMenu(string name)
 
 	visible: true
 	id: root
@@ -70,6 +72,8 @@ Window {
 				if(children[i].objectName === "MENU")
 				{
 					//console.log(children[i].name);
+                    children[i].signalOnExit.connect(root.signalOnExitMenu);
+                    children[i].signalOnEnter.connect(root.signalOnEnterMenu);
 					children[i].signalGoTo.connect(root.goTo);
 					children[i].signalUIAction.connect(root.uiAction);
 					children[i].signalUIParameterChaged.connect(root.uiParameterChanged);
