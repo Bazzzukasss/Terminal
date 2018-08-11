@@ -73,3 +73,9 @@
 /build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/UIBackend.o
 /build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/UIBackendTerminal.o
 /build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/UIBackendEmulator.o
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/Core.o
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/CoreEmulator.o
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/moc_Core.cpp
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/moc_Core.o
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/moc_CoreEmulator.cpp
+/build-Terminal-Desktop_Qt_5_10_1_MinGW_32bit-Debug/debug/moc_CoreEmulator.o

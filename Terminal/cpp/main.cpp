@@ -3,9 +3,10 @@
 #include <QFontDatabase>
 #include "Linguist.h"
 #include "UILogic.h"
-#include "UIBackendTerminal.h"
-#include "UIBackendEmulator.h"
+#include "UIBackend.h"
 #include "UIAssistant.h"
+#include "Core.h"
+#include "CoreEmulator.h"
 
 #define EMULATION
 
@@ -36,10 +37,11 @@ int main(int argc, char *argv[])
     //InitializeLinguist(&translator);
 
 #ifdef EMULATION
-    auto uiBackend = new UIBackendEmulator(&app);
+    auto core = new CoreEmulator(&app);
 #else
-    auto uiBackend = new UIBackendTerminal(&app);
+    auto core = new Core(&app);
 #endif
+    auto uiBackend = new UIBackend(core,&app);
     auto uiAssistant = new UIAssistant(&app);
     UILogic uiLogic(&engine,uiAssistant,uiBackend);
 

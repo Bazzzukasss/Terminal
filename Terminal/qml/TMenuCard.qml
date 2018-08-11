@@ -14,12 +14,12 @@ TMenu{
         property string productName: cppUIBackend.productName
         property int duration: 500
     }
-
+/*
     onSignalOnEnter: {
         cppUIBackend.detectCreditCard();
         cppUIBackend.requestData();
     }
-
+*/
     TRectangle{
         anchors.left: parent.left
         anchors.right: parent.right
