@@ -4,7 +4,10 @@
 #include "Linguist.h"
 #include "UILogic.h"
 #include "UIBackendTerminal.h"
+#include "UIBackendEmulator.h"
 #include "UIAssistant.h"
+
+#define EMULATION
 
 void InitializeLinguist(QTranslator* translator)
 {
@@ -32,9 +35,13 @@ int main(int argc, char *argv[])
     QTranslator translator;
     //InitializeLinguist(&translator);
 
-    UIAssistant uiAssistant;
-    UIBackendTerminal uiBackend;
-    UILogic uiLogic(&engine,&uiAssistant,&uiBackend);
+#ifdef EMULATION
+    auto uiBackend = new UIBackendEmulator(&app);
+#else
+    auto uiBackend = new UIBackendTerminal(&app);
+#endif
+    auto uiAssistant = new UIAssistant(&app);
+    UILogic uiLogic(&engine,uiAssistant,uiBackend);
 
     qmlRegisterSingletonType(QUrl(QLatin1String("qrc:/qml/TStyle.qml")), "CustomControls", 1, 0, "MyStyle");
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));

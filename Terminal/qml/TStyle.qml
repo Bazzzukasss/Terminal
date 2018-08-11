@@ -42,7 +42,7 @@ QtObject {
     readonly property var fonts: [fontH1bDk,fontH2bDk,fontH3bDk,fontH3rDk,fontH3rLt]
 
 //Menu
-    readonly property string menuStart: "MENU_PIN"
+    readonly property string menuStart: "MENU_START"
 
 //Screen
     readonly property int screenWidth:	272

@@ -9,8 +9,8 @@ class UIBackendTerminal : public UIBackend
 
 public:
     UIBackendTerminal(QObject* parent = nullptr);
-    Q_INVOKABLE bool isPinGood(const QString& aPin);
-    Q_INVOKABLE void actionPayment(const QString& aAction);
+    Q_INVOKABLE virtual bool isPinGood(const QString& aPin);
+    Q_INVOKABLE virtual void actionPayment(const QString& aAction);
 
     Q_PROPERTY(int cardMode READ getCardMode WRITE setCardMode NOTIFY signalCardModeChanged)
     Q_PROPERTY(QString cardState READ getCardState WRITE setCardState NOTIFY signalCardStateChanged)

@@ -19,7 +19,8 @@ SOURCES += \
     cpp/UILogic.cpp \
     cpp/UIAssistant.cpp \
     cpp/UIBackend.cpp \
-    cpp/UIBackendTerminal.cpp
+    cpp/UIBackendTerminal.cpp \
+    cpp/UIBackendEmulator.cpp
 
 RESOURCES += \
     res.qrc
@@ -68,4 +69,5 @@ HEADERS += \
     cpp/UILogic.h \
     cpp/UIAssistant.h \
     cpp/UIBackendTerminal.h \
-    cpp/UIBackend.h
+    cpp/UIBackend.h \
+    cpp/UIBackendEmulator.h

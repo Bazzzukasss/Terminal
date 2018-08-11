@@ -1,5 +1,4 @@
 #include "UIBackendTerminal.h"
-#include <QDebug>
 #include "UILogic.h"
 
 UIBackendTerminal::UIBackendTerminal(QObject *parent)
@@ -7,15 +6,13 @@ UIBackendTerminal::UIBackendTerminal(QObject *parent)
 {
 }
 
-bool UIBackendTerminal::isPinGood(const QString &aPin)
+bool UIBackendTerminal::isPinGood(const QString&)
 {
-    mpUILogic->showMessage(Messenger::MT_WAITING, tr("Please, waiting.\nTransaction is in process."), 3000);
-    return aPin == "1111";
+    return false;
 }
 
-void UIBackendTerminal::actionPayment(const QString &aAction)
+void UIBackendTerminal::actionPayment(const QString&)
 {
-    qDebug() << aAction;
 }
 
 int UIBackendTerminal::getCardMode() const
