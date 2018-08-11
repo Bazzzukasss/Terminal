@@ -6,13 +6,36 @@ UIBackendTerminal::UIBackendTerminal(QObject *parent)
 {
 }
 
-bool UIBackendTerminal::isPinGood(const QString&)
+bool UIBackendTerminal::checkPinCode(const QString&)
 {
     return false;
 }
 
-void UIBackendTerminal::actionPayment(const QString&)
+bool UIBackendTerminal::detectCreditCard()
 {
+    return false;
+}
+
+bool UIBackendTerminal::requestProductPrice()
+{
+    return false;
+}
+
+bool UIBackendTerminal::requestProductName()
+{
+    return false;
+}
+
+bool UIBackendTerminal::requestData()
+{
+    if( !requestProductPrice() ) return false;
+    if( !requestProductName() ) return false;
+    return true;
+}
+
+bool UIBackendTerminal::doPayment()
+{
+    return false;
 }
 
 int UIBackendTerminal::getCardMode() const
@@ -25,9 +48,9 @@ QString UIBackendTerminal::getCardState() const
     return mCardState;
 }
 
-double UIBackendTerminal::getPrice() const
+double UIBackendTerminal::getProductPrice() const
 {
-    return mPrice;
+    return mProductPrice;
 }
 
 bool UIBackendTerminal::getCardPresent() const
@@ -40,32 +63,32 @@ QString UIBackendTerminal::getProductName() const
     return mProductName;
 }
 
-void UIBackendTerminal::setCardMode(int cardMode)
+void UIBackendTerminal::setCardMode(int aCardMode)
 {
-    mCardMode = cardMode;
+    mCardMode = aCardMode;
     emit signalCardModeChanged(mCardMode);
 }
 
-void UIBackendTerminal::setCardState(QString cardState)
+void UIBackendTerminal::setCardState(QString aCardState)
 {
-    mCardState = cardState;
+    mCardState = aCardState;
     emit signalCardStateChanged(mCardState);
 }
 
-void UIBackendTerminal::setPrice(double price)
+void UIBackendTerminal::setProductPrice(double aPrice)
 {
-    mPrice = price;
-    emit signalPriceChanged(mPrice);
+    mProductPrice = aPrice;
+    emit signalProductPriceChanged(mProductPrice);
 }
 
-void UIBackendTerminal::setCardPresent(bool isCardPresent)
+void UIBackendTerminal::setCardPresent(bool aIsCardPresent)
 {
-    mIsCardPresent = isCardPresent;
+    mIsCardPresent = aIsCardPresent;
     emit signalCardPresentChanged(mIsCardPresent);
 }
 
-void UIBackendTerminal::setProductName(QString productName)
+void UIBackendTerminal::setProductName(QString aProductName)
 {
-    mProductName = productName;
+    mProductName = aProductName;
     emit signalProductNameChanged(mProductName);
 }

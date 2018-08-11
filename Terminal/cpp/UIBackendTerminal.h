@@ -9,41 +9,45 @@ class UIBackendTerminal : public UIBackend
 
 public:
     UIBackendTerminal(QObject* parent = nullptr);
-    Q_INVOKABLE virtual bool isPinGood(const QString& aPin);
-    Q_INVOKABLE virtual void actionPayment(const QString& aAction);
+    Q_INVOKABLE virtual bool checkPinCode(const QString& aPin);
+    Q_INVOKABLE virtual bool doPayment();
+    Q_INVOKABLE virtual bool detectCreditCard();
+    Q_INVOKABLE virtual bool requestProductPrice();
+    Q_INVOKABLE virtual bool requestProductName();
+    Q_INVOKABLE virtual bool requestData();
 
     Q_PROPERTY(int cardMode READ getCardMode WRITE setCardMode NOTIFY signalCardModeChanged)
     Q_PROPERTY(QString cardState READ getCardState WRITE setCardState NOTIFY signalCardStateChanged)
-    Q_PROPERTY(double price READ getPrice WRITE setPrice NOTIFY signalPriceChanged)
+    Q_PROPERTY(double productPrice READ getProductPrice WRITE setProductPrice NOTIFY signalProductPriceChanged)
     Q_PROPERTY(bool isCardPresent READ getCardPresent WRITE setCardPresent NOTIFY signalCardPresentChanged)
     Q_PROPERTY(QString productName READ getProductName WRITE setProductName NOTIFY signalProductNameChanged)
 
     int getCardMode() const;
     QString getCardState() const;
-    double getPrice() const;
+    double getProductPrice() const;
     bool getCardPresent() const;    
     QString getProductName() const;
 
 public slots:
-    void setCardMode(int cardMode);
-    void setCardState(QString cardState);
-    void setPrice(double price);
-    void setCardPresent(bool isCardPresent);    
-    void setProductName(QString productName);
+    void setCardMode(int aCardMode);
+    void setCardState(QString aCardState);
+    void setProductPrice(double aPrice);
+    void setCardPresent(bool aIsCardPresent);
+    void setProductName(QString aProductName);
 
 signals:
     void signalCardModeChanged(int);
     void signalCardStateChanged(const QString&);
-    void signalPriceChanged(double);
+    void signalProductPriceChanged(double);
     void signalCardPresentChanged(bool);    
-    void signalProductNameChanged(const QString& productName);
+    void signalProductNameChanged(const QString&);
 
 private:
     int mCardMode{0};
-    QString mCardState{tr("Payment method")};
-    double mPrice{12.5f};
+    QString mCardState{""};
+    double mProductPrice{0.0f};
     bool mIsCardPresent{false};
-    QString mProductName{"Product Name"};
+    QString mProductName{""};
 };
 
 #endif // UIBACKENDTERMINAL_H

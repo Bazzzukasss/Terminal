@@ -10,20 +10,16 @@ TMenu{
         property var modeImages: ["qrc:/img/card-none.svg","qrc:/img/card-nfc.svg","qrc:/img/card-chip.svg","qrc:/img/card-stripe.svg"]
         property string selectedModeImage: modeImages[cppUIBackend.cardMode]
         property string cardState: cppUIBackend.cardState
-        property real price: cppUIBackend.price
+        property real price: cppUIBackend.productPrice
         property string productName: cppUIBackend.productName
-        property var buttons: [buttonCardChip,buttonCardStripe,buttonCardNFC]
-        property var selectedButton: buttons[cppUIBackend.cardMode-1]
         property int duration: 500
     }
 
-    onVisibleChanged: {
-        if(visible)
-        {
-            cppUIBackend.setCardMode(0);
-            cppUIBackend.setCardState("Payment method");
-        }
+    onSignalOnEnter: {
+        cppUIBackend.detectCreditCard();
+        cppUIBackend.requestData();
     }
+
     TRectangle{
         anchors.left: parent.left
         anchors.right: parent.right
@@ -55,7 +51,7 @@ TMenu{
             anchors.topMargin: 164
             anchors.horizontalCenter: parent.horizontalCenter
             styleFont: MyStyle.fonts[0]
-            text: data.price
+            text: data.price + qsTr(" EUR") + cppLinguist.emptyString
         }
 
         TLabel{

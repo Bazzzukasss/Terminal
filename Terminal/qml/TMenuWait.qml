@@ -24,7 +24,7 @@ TMenu{
             onRotationChanged: {
                 if(rotation > 350 && visible)
                 {
-                    if(cppUIBackend.isPinGood("1111"))
+                    if(cppUIBackend.checkPinCode("1111"))
                         root.signalGoTo("MENU_SUCCESS");
                     else
                         root.signalGoTo("MENU_ERROR");

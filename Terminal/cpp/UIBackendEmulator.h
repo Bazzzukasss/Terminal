@@ -8,7 +8,11 @@ class UIBackendEmulator : public UIBackendTerminal
 public:
     UIBackendEmulator(QObject* parent = nullptr);
 
-    bool isPinGood(const QString &aPin);
+    bool checkPinCode(const QString &aPin) override;
+    bool doPayment() override;
+    bool detectCreditCard() override;
+    bool requestProductPrice() override;
+    bool requestProductName() override;
 };
 
 #endif // UIBACKENDEMULATOR_H
