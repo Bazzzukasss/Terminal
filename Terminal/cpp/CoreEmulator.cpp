@@ -1,6 +1,7 @@
 #include "CoreEmulator.h"
 #include <QTimer>
 #include <QEventLoop>
+#include <QDebug>
 
 CoreEmulator::CoreEmulator(QObject *parent)
     : Core(parent)
@@ -10,12 +11,15 @@ CoreEmulator::CoreEmulator(QObject *parent)
 bool CoreEmulator::checkPinCode(const QString &aPinCode)
 {
     proccessEmulation();
+    qDebug()<<"checkPinCode:"<<aPinCode;
     return aPinCode == "1111";
 }
 
 bool CoreEmulator::doPayment()
 {
     proccessEmulation();
+    qDebug()<<"doPayment";
+    //emit signalError("Core payment error!");
     return true;
 }
 

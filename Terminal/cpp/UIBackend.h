@@ -47,6 +47,8 @@ protected:
     UILogic* mpUILogic;
     Core* mpCore;
 
+    void error(const QString& aInformation);
+
 private:
     int mCardMode{0};
     QString mCardState{""};

@@ -23,10 +23,10 @@ Item {
     function addButton( aCaption, aKey, aStyleItem, aStyleItemPressed, aAction)
     {
         var component = Qt.createComponent("TButton.qml");
-        if (component.status === Component.Ready)
+        if (component.status == Component.Ready)
         {
             var button = component.createObject( buttonsConteiner, { "caption": aCaption, "key": aKey, "action": aAction, "styleItem": aStyleItem, "styleItemPressed": aStyleItemPressed } );
-            if (button === null)
+            if (button == null)
                 console.log("Error creating button")
             else
             {
@@ -35,7 +35,7 @@ Item {
             }
         }
         else
-            if (component.status === Component.Error)
+            if (component.status == Component.Error)
                 console.log("Error loading component:", component.errorString())
     }
 

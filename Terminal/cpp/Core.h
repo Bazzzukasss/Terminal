@@ -19,7 +19,7 @@ signals:
     void signalCardStateChanged( const QString& aState );
     void signalProductNameChanged( const QString& aName );
     void signalProductPriceChanged( double aPrice );
-
+    void signalError( const QString& aInformation);
 };
 
 #endif // CORE_H

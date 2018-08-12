@@ -56,6 +56,7 @@ TMenu{
                 styleItem: MyStyle.buttonYellowRound
                 styleItemPressed: MyStyle.buttonYellowRoundPressed
                 onSignalClicked: {
+                    console.log("Pay Button pressed")
                     if(cppUIBackend.doPayment(input.value))
                         root.signalGoTo("MENU_SUCCESS");
                     else

@@ -7,7 +7,7 @@ Window {
     visible: true
     width: MyStyle.screenWidth
     height: MyStyle.screenHeight
-    title: qsTr("Terminal") + cppLinguist.emptyString
+    title: qsTr("Innotrans") + cppLinguist.emptyString
     currentMenu: MyStyle.menuStart
 
     property string currentMenu
@@ -65,7 +65,7 @@ Window {
             message.signalClicked.connect(root.hideMessage);
 			for(var i = 0; i < children.length; ++i)
 			{
-				if(children[i].objectName === "MENU")
+                if(children[i].objectName == "MENU")
 				{
 					//console.log(children[i].name);
                     children[i].signalOnExit.connect(root.signalOnExitMenu);
@@ -78,13 +78,13 @@ Window {
 		}
 
 		children: [
-            TMenuStart				{ id: menuStart; visible: currentMenu === name },
-            TMenuCard				{ id: menuCard; visible: currentMenu === name },
-            TMenuPin				{ id: menuPin; visible: currentMenu === name },
-            TMenuSuccess        	{ id: menuSuccess; visible: currentMenu === name },
-            TMenuError				{ id: menuError; visible: currentMenu === name },
-            TMenuInformation		{ id: menuInformation; visible: currentMenu === name },
-            TMessage                { id: message; visible: false }
+            TMenuStart				{ id: menuStart; visible: currentMenu == name && !message.visible; enabled: visible},
+            TMenuCard				{ id: menuCard; visible: currentMenu == name && !message.visible; enabled: visible },
+            TMenuPin				{ id: menuPin; visible: currentMenu == name && !message.visible; enabled: visible },
+            TMenuSuccess        	{ id: menuSuccess; visible: currentMenu == name && !message.visible; enabled: visible },
+            TMenuError				{ id: menuError; visible: currentMenu == name && !message.visible; enabled: visible },
+            TMenuInformation		{ id: menuInformation; visible: currentMenu == name && !message.visible; enabled: visible },
+            TMessage                { id: message; visible: false; enabled: visible }
 		]
 	}
 }

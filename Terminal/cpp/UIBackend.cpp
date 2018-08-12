@@ -22,6 +22,7 @@ void UIBackend::initialize()
     connect(mpCore, &Core::signalCardStateChanged,      this, &UIBackend::setCardState);
     connect(mpCore, &Core::signalProductNameChanged,    this, &UIBackend::setProductName);
     connect(mpCore, &Core::signalProductPriceChanged,   this, &UIBackend::setProductPrice);
+    connect(mpCore, &Core::signalError,                 this, &UIBackend::error);
 }
 
 bool UIBackend::doPayment(const QString& aPinCode)
@@ -41,6 +42,11 @@ bool UIBackend::refreshData()
 {
     if( !mpCore->refreshData() ) return false;
     return true;
+}
+
+void UIBackend::error(const QString &aInformation)
+{
+    mpUILogic->showMessage(UIMessenger::MT_ERROR, aInformation);
 }
 
 int UIBackend::getCardMode() const

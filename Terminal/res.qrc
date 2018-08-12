@@ -17,7 +17,6 @@
         <file>qml/TMenuSuccess.qml</file>
         <file>fonts/Roboto-Bold.ttf</file>
         <file>qml/TMessage.qml</file>
-        <file>img/start-image.png</file>
         <file>img/card-chip.svg</file>
         <file>img/card-nfc.svg</file>
         <file>img/card-stripe.svg</file>
@@ -49,5 +48,6 @@
         <file>img/message-error.svg</file>
         <file>img/message-proccessing.gif</file>
         <file>img/message-waiting.gif</file>
+        <file>img/bg-start.png</file>
     </qresource>
 </RCC>

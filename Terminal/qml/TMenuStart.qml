@@ -10,7 +10,7 @@ TMenu{
         Image{
             id: img
             anchors.centerIn: parent
-            source:"qrc:/img/start-image.png"
+            source:"qrc:/img/bg-start.png"
         }
 
         TRectangle{
