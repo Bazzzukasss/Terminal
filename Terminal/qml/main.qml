@@ -84,7 +84,6 @@ Window {
             TMenuSuccess        	{ id: menuSuccess; visible: currentMenu === name },
             TMenuError				{ id: menuError; visible: currentMenu === name },
             TMenuInformation		{ id: menuInformation; visible: currentMenu === name },
-            TMenuWait				{ id: menuWait; visible: currentMenu === name },
             TMessage                { id: message; visible: false }
 		]
 	}

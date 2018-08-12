@@ -15,7 +15,6 @@
         <file>qml/TMenuPin.qml</file>
         <file>qml/TMenuStart.qml</file>
         <file>qml/TMenuSuccess.qml</file>
-        <file>qml/TMenuWait.qml</file>
         <file>fonts/Roboto-Bold.ttf</file>
         <file>qml/TMessage.qml</file>
         <file>img/start-image.png</file>

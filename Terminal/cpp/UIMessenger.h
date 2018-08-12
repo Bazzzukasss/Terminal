@@ -1,5 +1,5 @@
-#ifndef MESSENGER_H
-#define MESSENGER_H
+#ifndef UIMESSENGER_H
+#define UIMESSENGER_H
 
 #include <QObject>
 #include <QString>
@@ -26,7 +26,7 @@ extern MessageButton ButtonStop;
 extern MessageButton ButtonStopPlatform;
 extern MessageButton ButtonStopMovement;
 
-class Messenger : public QObject
+class UIMessenger : public QObject
 {
 	Q_OBJECT
 
@@ -41,7 +41,7 @@ public:
                        MT_WAITING };
 
 
-    Messenger(QObject* parent = 0);
+    UIMessenger(QObject* parent = 0);
 
     QString showMessage(const QString& aIcon, const QString aCaption, const QString& aText, const QList<MessageButton> aButtons, int aShowingTime = -1, bool aIsNeedToWaitAnswer = true);
     QString showMessage(MessageType aType, const QString aText, int aShowingTime = -1, bool aIsNeedToWaitAnswer = true);
@@ -66,4 +66,4 @@ private:
     QString waitMessageAnswer(int aShowingTime, bool aIsNeedToWaitAnswer);
 };
 
-#endif // MESSENGER_H
+#endif // UIMESSENGER_H

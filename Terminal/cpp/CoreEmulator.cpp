@@ -1,4 +1,6 @@
 #include "CoreEmulator.h"
+#include <QTimer>
+#include <QEventLoop>
 
 CoreEmulator::CoreEmulator(QObject *parent)
     : Core(parent)
@@ -7,11 +9,13 @@ CoreEmulator::CoreEmulator(QObject *parent)
 
 bool CoreEmulator::checkPinCode(const QString &aPinCode)
 {
+    proccessEmulation();
     return aPinCode == "1111";
 }
 
 bool CoreEmulator::doPayment()
 {
+    proccessEmulation();
     return true;
 }
 
@@ -34,4 +38,15 @@ bool CoreEmulator::refreshData()
     emit signalCardStateChanged(cardState);
     emit signalProductNameChanged(productName);
     emit signalProductPriceChanged(productPrice);
+    return true;
+}
+
+void CoreEmulator::proccessEmulation(int aTime)
+{
+    QEventLoop loop;
+    QTimer timer;
+    timer.setSingleShot(true);
+    QObject::connect(&timer, &QTimer::timeout, [&](){ loop.quit(); });
+    timer.start(aTime);
+    loop.exec();
 }

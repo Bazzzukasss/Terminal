@@ -1,5 +1,7 @@
 #include "UIBackend.h"
 #include "Core.h"
+#include "UIMessenger.h"
+#include "UILogic.h"
 
 UIBackend::UIBackend(Core *apCore, QObject* parent)
     : QObject(parent)
@@ -22,19 +24,23 @@ void UIBackend::initialize()
     connect(mpCore, &Core::signalProductPriceChanged,   this, &UIBackend::setProductPrice);
 }
 
-bool UIBackend::checkPinCode(const QString& aPinCode)
+bool UIBackend::doPayment(const QString& aPinCode)
 {
-    return mpCore->checkPinCode(aPinCode);
-}
+    mpUILogic->showMessage(UIMessenger::MT_WAITING, tr("Please, waiting.\nTransaction is in process."), -1, false);
 
-bool UIBackend::doPayment()
-{
-    return mpCore->doPayment();
+    bool result = mpCore->checkPinCode(aPinCode);
+    if( result )
+        result = mpCore->doPayment();
+
+    mpUILogic->hideMessage();
+
+    return result;
 }
 
 bool UIBackend::refreshData()
 {
-    return mpCore->refreshData();
+    if( !mpCore->refreshData() ) return false;
+    return true;
 }
 
 int UIBackend::getCardMode() const

@@ -12,6 +12,9 @@ public:
     bool checkPinCode(const QString &aPinCode) override;
     bool doPayment() override;
     bool refreshData() override;
+
+private:
+    void proccessEmulation(int aTime = 1000);
 };
 
 #endif // COREEMULATOR_H

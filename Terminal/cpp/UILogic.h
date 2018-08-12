@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QVariant>
 #include <QMap>
-#include "Messenger.h"
+#include "UIMessenger.h"
 
 class QQuickWindow;
 class QQmlApplicationEngine;
@@ -25,7 +25,7 @@ public:
     void setQMLProperty(QString const& aParamID, QVariant const& aValue);
     void setContextProperty(const QString &aName, QObject *aValue);    
 
-    QString showMessage(Messenger::MessageType aType, const QString aText, int aWaitingTime = -1, bool isNeedToWaitAnswer = true);
+    QString showMessage(UIMessenger::MessageType aType, const QString aText, int aWaitingTime = -1, bool isNeedToWaitAnswer = true);
     QString showMessage(const QString& aIcon, const QString aCaption, const QString& aText, const QList<MessageButton> aButtons, int aWaitingTime = -1, bool isNeedToWaitAnswer = true);
     void hideMessage();
 
@@ -34,10 +34,10 @@ signals:
 
 protected:
     QQmlApplicationEngine* mpEngine;
-    QQuickWindow* mpQuickWindow;
-    Messenger* mpMessenger;
     UIAssistant* mpUIAssistant;
     UIBackend* mpUIBackend;
+    UIMessenger* mpMessenger;
+    QQuickWindow* mpQuickWindow;
     HandlerMap  mActionHandlers;
     HandlerMap  mParamHandlers;
 

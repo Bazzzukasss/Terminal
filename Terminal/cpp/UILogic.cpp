@@ -4,7 +4,7 @@
 #include <QQmlProperty>
 #include <QDebug>
 #include "Linguist.h"
-#include "Messenger.h"
+#include "UIMessenger.h"
 #include "UILogic.h"
 #include "UIAssistant.h"
 #include "UIBackend.h"
@@ -12,9 +12,9 @@
 UILogic::UILogic(QQmlApplicationEngine *apEngine, UIAssistant *apUIAssistant, UIBackend *apUIBackend, QObject *parent)
     : QObject(parent)
     , mpEngine(apEngine)
-    , mpMessenger (new Messenger(this))
     , mpUIAssistant(apUIAssistant)
     , mpUIBackend(apUIBackend)
+    , mpMessenger (new UIMessenger(this))
 {   
     connect(mpEngine,&QQmlApplicationEngine::objectCreated,[&](){
         mpQuickWindow = qobject_cast<QQuickWindow*>(mpEngine->rootObjects().value(0));
@@ -90,7 +90,7 @@ void UILogic::setContextProperty(const QString &aName, QObject *aValue)
 }
 
 //Message
-QString UILogic::showMessage(Messenger::MessageType aType, const QString aText, int aWaitingTime, bool isNeedToWaitAnswer)
+QString UILogic::showMessage(UIMessenger::MessageType aType, const QString aText, int aWaitingTime, bool isNeedToWaitAnswer)
 {
     return mpMessenger->showMessage(aType,aText,aWaitingTime,isNeedToWaitAnswer);
 }

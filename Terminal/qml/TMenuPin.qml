@@ -56,7 +56,7 @@ TMenu{
                 styleItem: MyStyle.buttonYellowRound
                 styleItemPressed: MyStyle.buttonYellowRoundPressed
                 onSignalClicked: {
-                    if(cppUIBackend.checkPinCode(input.value))
+                    if(cppUIBackend.doPayment(input.value))
                         root.signalGoTo("MENU_SUCCESS");
                     else
                         root.signalGoTo("MENU_ERROR");

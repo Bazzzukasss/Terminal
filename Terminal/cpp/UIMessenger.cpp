@@ -1,4 +1,4 @@
-#include "Messenger.h"
+#include "UIMessenger.h"
 
 
 #include <QEventLoop>
@@ -12,7 +12,7 @@ MessageButton ButtonCancel  = {"Cancel","No",MessageButton::BT_HIGHLITED,""};
 MessageButton ButtonApply   = {"Apply","Yes",MessageButton::BT_STANDART,""};
 MessageButton ButtonStop    = {"Stop","Ok",MessageButton::BT_HIGHLITED,""};
 
-Messenger::Messenger(QObject* parent /*= 0*/) 
+UIMessenger::UIMessenger(QObject* parent /*= 0*/) 
 	: QObject(parent)
 	, mUserAnswer("")
     , mSourcePath("qrc:/img/")
@@ -23,10 +23,10 @@ Messenger::Messenger(QObject* parent /*= 0*/)
                                                         emit signalHideMessage(QVariant());
                                                     });
 
-    QObject::connect(this, static_cast<void (Messenger::*)(QPrivateSignal)>(&Messenger::signalHideMessage), &mLoop, &QEventLoop::quit);
+    QObject::connect(this, static_cast<void (UIMessenger::*)(QPrivateSignal)>(&UIMessenger::signalHideMessage), &mLoop, &QEventLoop::quit);
 }
 
-QString Messenger::showMessage(MessageType aType, const QString aText, int aShowingTime /*= -1*/, bool aIsNeedToWaitAnswer)
+QString UIMessenger::showMessage(MessageType aType, const QString aText, int aShowingTime /*= -1*/, bool aIsNeedToWaitAnswer)
 {
     QString icons[] = { mSourcePath+"message-info.svg",
                         mSourcePath+"message-done.svg",
@@ -62,7 +62,7 @@ QString Messenger::showMessage(MessageType aType, const QString aText, int aShow
     return showMessage(icons[aType],captions[aType], aText, buttons[aType], aShowingTime, aIsNeedToWaitAnswer);
 }
 
-QString Messenger::showMessage(const QString &aIcon, const QString aCaption, const QString &aText, const QList<MessageButton> aButtons, int aShowingTime /*= -1*/, bool aIsNeedToWaitAnswer)
+QString UIMessenger::showMessage(const QString &aIcon, const QString aCaption, const QString &aText, const QList<MessageButton> aButtons, int aShowingTime /*= -1*/, bool aIsNeedToWaitAnswer)
 {
     QVariantMap dataMap;
     QVariantList buttonsList;
@@ -87,7 +87,7 @@ QString Messenger::showMessage(const QString &aIcon, const QString aCaption, con
     return waitMessageAnswer(aShowingTime,aIsNeedToWaitAnswer);
 }
 
-QString Messenger::waitMessageAnswer(int aShowingTime, bool aIsNeedToWaitAnswer)
+QString UIMessenger::waitMessageAnswer(int aShowingTime, bool aIsNeedToWaitAnswer)
 {
     if (aShowingTime > 0)
         mTimer.start(aShowingTime);
@@ -101,13 +101,13 @@ QString Messenger::waitMessageAnswer(int aShowingTime, bool aIsNeedToWaitAnswer)
     return "";
 }
 
-void Messenger::hideMessage()
+void UIMessenger::hideMessage()
 {
     emit signalHideMessage(QPrivateSignal());
     emit signalHideMessage(QVariant());
 }
 
-QMessageBox::StandardButton Messenger::getUserButton() const
+QMessageBox::StandardButton UIMessenger::getUserButton() const
 {
     if (mUserAnswer == "Yes") return QMessageBox::Yes;
     if (mUserAnswer == "No") return QMessageBox::No;
@@ -116,12 +116,12 @@ QMessageBox::StandardButton Messenger::getUserButton() const
     return QMessageBox::Ok;
 }
 
-void Messenger::setSourcePath(QString &mPath)
+void UIMessenger::setSourcePath(QString &mPath)
 {
     mSourcePath = mPath;
 }
 
-void Messenger::slotUserAnswerReceived(const QString& aAnswer)
+void UIMessenger::slotUserAnswerReceived(const QString& aAnswer)
 {
     mUserAnswer = aAnswer;
     hideMessage();

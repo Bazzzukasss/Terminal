@@ -14,8 +14,7 @@ public:
 
     void setUILogic(UILogic* apUILogic);
 
-    Q_INVOKABLE virtual bool checkPinCode(const QString& aPinCode);
-    Q_INVOKABLE virtual bool doPayment();
+    Q_INVOKABLE virtual bool doPayment(const QString& aPinCode);
     Q_INVOKABLE virtual bool refreshData();
 
     Q_PROPERTY(int cardMode READ getCardMode WRITE setCardMode NOTIFY signalCardModeChanged)

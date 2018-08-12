@@ -15,12 +15,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     cpp/Linguist.cpp \
     cpp/main.cpp \
-    cpp/Messenger.cpp \
     cpp/UILogic.cpp \
     cpp/UIAssistant.cpp \
     cpp/UIBackend.cpp \
     cpp/Core.cpp \
-    cpp/CoreEmulator.cpp
+    cpp/CoreEmulator.cpp \
+    cpp/UIMessenger.cpp
 
 RESOURCES += \
     res.qrc
@@ -52,7 +52,6 @@ DISTFILES += \
     qml/TMenuSuccess.qml \
     qml/TMenuError.qml \
     qml/TMenuInformation.qml \
-    qml/TMenuWait.qml \
     qml/TMessage.qml \
     qml/TDisabledShade.qml \
     qml/TEdit.qml \
@@ -65,9 +64,9 @@ DISTFILES += \
 
 HEADERS += \
     cpp/Linguist.h \
-    cpp/Messenger.h \
     cpp/UILogic.h \
     cpp/UIAssistant.h \
     cpp/UIBackend.h \
     cpp/Core.h \
-    cpp/CoreEmulator.h
+    cpp/CoreEmulator.h \
+    cpp/UIMessenger.h
