@@ -23,12 +23,12 @@ Window {
         message.visible = true;
         message.setData(aDataMap, aButtonsList);
         message.currentMenu = currentMenu;
-        currentMenu = "MESSAGE_EXT"
+        //currentMenu = "MESSAGE_EXT"
     }
 
     function hideMessage( )
     {
-        currentMenu = message.currentMenu;
+        //currentMenu = message.currentMenu;
         message.visible = false;
     }
 
