@@ -14,7 +14,7 @@ public:
     bool refreshData() override;
 
 private:
-    void proccessEmulation(int aTime = 1000);
+    void proccessEmulation(int aTime = 1500);
 };
 
 #endif // COREEMULATOR_H

@@ -14,12 +14,10 @@ TMenu{
 
     Timer{
         id: timer
-        interval: MyStyle.timerValue;
+        interval: 3000
         onTriggered:{
             if(cppUIBackend.isCardPresent)
-                root.signalGoTo("MENU_CARD");
-            else
-                root.signalGoTo("MENU_START");
+                root.signalGoTo("MENU_INFORMATION");
         }
 
     }
@@ -31,38 +29,45 @@ TMenu{
         color1: MyStyle.clTransparent
         color2: MyStyle.clDark
     }
-    Column{
+
+    Image{
+        id: img
+        width: 80
+        height: 80
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 304
+        anchors.horizontalCenter: parent.horizontalCenter
+        source:"qrc:/img/success-image.svg"
+    }
+
+    TLabel{
+        id: labelDescription
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 200
+        anchors.horizontalCenter: parent.horizontalCenter
+        styleFont: MyStyle.fonts[0]
+        text: qsTr("Payment\nAccepted")+cppLinguist.emptyString
+    }
+
+    Image{
+        id: imageCardChip
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 67
+        anchors.horizontalCenter: parent.horizontalCenter
+        source: "qrc:/img/card-chip.svg"
+    }
+
+    TLabel{
+        id: labelInfo
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 32
+        anchors.horizontalCenter: parent.horizontalCenter
+        styleFont: MyStyle.fonts[3]
+        text: qsTr("Take back your card")+cppLinguist.emptyString
+    }
+
+    MouseArea{
         anchors.fill: parent
-        anchors.topMargin: 96
-        Image{
-            id: img
-            width: 80
-            height: 80
-            anchors.horizontalCenter: parent.horizontalCenter
-            source:"qrc:/img/success-image.svg"
-        }
-        Item{height: 24; width:1}
-        TLabel{
-            id: labelDescription
-            anchors.horizontalCenter: parent.horizontalCenter
-            styleFont: MyStyle.fonts[0]
-            text: qsTr("Payment\nAccepted")+cppLinguist.emptyString
-        }
-        Item{height: 16; width:1}
-        TLabel{
-            id: labelInfo
-            anchors.horizontalCenter: parent.horizontalCenter
-            styleFont: MyStyle.fonts[3]
-            text: qsTr("Other detailed information\nabout transaction")+cppLinguist.emptyString
-        }
-        Item{height: 66; width:1}
-        TButton{
-            id: buttonOk
-            anchors.horizontalCenter: parent.horizontalCenter
-            styleItem: MyStyle.buttonYellow
-            styleItemPressed: MyStyle.buttonYellowPressed
-            caption: qsTr("Ok") + cppLinguist.emptyString
-            onSignalClicked: root.signalGoTo("MENU_INFORMATION");
-        }
+        onClicked: root.signalGoTo("MENU_INFORMATION");
     }
 }

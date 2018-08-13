@@ -27,7 +27,7 @@ void UIBackend::initialize()
 
 bool UIBackend::doPayment(const QString& aPinCode)
 {
-    mpUILogic->showMessage(UIMessenger::MT_WAITING, tr("Please, waiting.\nTransaction is in process."), -1, false);
+    mpUILogic->showMessage(UIMessenger::MT_WAITING, tr("Please, wait.\nTransaction in progress."), -1, false);
 
     bool result = mpCore->checkPinCode(aPinCode);
     if( result )

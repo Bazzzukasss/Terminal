@@ -8,6 +8,11 @@ TMenu{
 
     Item{
         anchors.fill: parent
+        property bool isCardPresent: cppUIBackend.isCardPresent
+        onIsCardPresentChanged: {
+            if( !isCardPresent)
+                root.signalGoTo("MENU_ERROR")
+        }
 
         TLabel{
             id: labelCaption
