@@ -5,22 +5,16 @@ TMenu{
     id: root
     name:"MENU_SUCCESS"
 
-    onVisibleChanged:{
-        if(visible)
-            timer.start()
-        else
-            timer.stop()
-    }
+    Item{
+        id: proc
+        property bool isCardPresent: cppUIBackend.isCardPresent
 
-    Timer{
-        id: timer
-        interval: 3000
-        onTriggered:{
-            if(cppUIBackend.isCardPresent)
+        onIsCardPresentChanged: {
+            if(!isCardPresent && root.visible)
                 root.signalGoTo("MENU_INFORMATION");
         }
-
     }
+
     TRectangle{
         anchors.left: parent.left
         anchors.right: parent.right
@@ -66,8 +60,22 @@ TMenu{
         text: qsTr("Take back your card")+cppLinguist.emptyString
     }
 
-    MouseArea{
-        anchors.fill: parent
-        onClicked: root.signalGoTo("MENU_INFORMATION");
+    Item{
+        id: debug
+        enabled: !cppUIAssistant.isReleaseVersion()
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height:16
+        MouseArea{
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            onClicked: {
+                if(mouse.button & Qt.RightButton)
+                    cppUIBackend.isCardPresent = false;
+                else
+                    cppUIBackend.isCardPresent = true;
+            }
+        }
     }
 }

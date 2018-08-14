@@ -30,16 +30,18 @@ QtObject {
 //Fonts
     readonly property font fontH1b: Qt.font({ family: "Roboto-Black", bold: true, pixelSize: sizeH1})
     readonly property font fontH2b: Qt.font({ family: "Roboto", bold: true, pixelSize: sizeH2})
+    readonly property font fontH2r: Qt.font({ family: "Roboto-Regular", bold: true, pixelSize: sizeH2})
     readonly property font fontH3b: Qt.font({ family: "Roboto", bold: true, pixelSize: sizeH3})
     readonly property font fontH3r: Qt.font({ family: "Roboto", bold: false, pixelSize: sizeH3})
 
     readonly property TStyleFont fontH1bDk:  TStyleFont{ font: fontH1b; color: clGreyDk }
     readonly property TStyleFont fontH2bDk:  TStyleFont{ font: fontH2b; color: clGreyDk }
+    readonly property TStyleFont fontH2rDk:  TStyleFont{ font: fontH2r; color: clGreyDk }
     readonly property TStyleFont fontH3bDk:  TStyleFont{ font: fontH3b; color: clGreyLt }
     readonly property TStyleFont fontH3rDk:  TStyleFont{ font: fontH3r; color: clGreyLt }
     readonly property TStyleFont fontH3rLt:  TStyleFont{ font: fontH3r; color: clWhite }
 
-    readonly property var fonts: [fontH1bDk,fontH2bDk,fontH3bDk,fontH3rDk,fontH3rLt]
+    readonly property var fonts: [fontH1bDk,fontH2bDk,fontH3bDk,fontH3rDk,fontH3rLt,fontH2rDk]
 
 //Menu
     readonly property string menuStart: "MENU_START"

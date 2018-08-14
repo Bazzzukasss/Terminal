@@ -45,7 +45,7 @@ TMenu{
         anchors.top: parent.top
         anchors.topMargin: 410
         anchors.horizontalCenter: parent.horizontalCenter
-        styleFont: MyStyle.fonts[1]
+        styleFont: MyStyle.fonts[5]
         text: qsTr("Done")+cppLinguist.emptyString
         MouseArea{
             anchors.fill: parent

@@ -9,17 +9,42 @@ TMenu{
 
     onVisibleChanged:{
         if(visible)
-            timer.start()
+        {
+            timerToBack.start()
+            timerToNext.start()
+        }
         else
-            timer.stop()
-    }
+        {
+            timerToBack.stop()
+            timerToNext.stop()
+        }
+    }    
 
-    Timer{
-        id: timer
-        interval: 30000
-        onTriggered:{
-            if(!cppUIBackend.isCardPresent)
-                root.signalGoTo("MENU_START");
+    Item{
+        id: proc
+        property bool isCardPresent: cppUIBackend.isCardPresent
+
+        onIsCardPresentChanged: {
+            if(isCardPresent && root.visible)
+                root.signalGoTo("MENU_PIN");
+        }
+
+        Timer{
+            id: timerToBack
+            interval: 30000
+            onTriggered:{
+                if(!cppUIBackend.isCardPresent)
+                    root.signalGoTo("MENU_START");
+            }
+        }
+
+        Timer{
+            id: timerToNext
+            interval: 2000
+            onTriggered:{
+                if(cppUIBackend.isCardPresent)
+                    root.signalGoTo("MENU_PIN");
+            }
         }
     }
 
@@ -84,8 +109,22 @@ TMenu{
         source: "qrc:/img/card-nfc.svg"
     }
 
-    MouseArea{
-        anchors.fill: parent
-        onClicked: root.signalGoTo("MENU_PIN");
+    Item{
+        id: debug
+        enabled: !cppUIAssistant.isReleaseVersion()
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height:16
+        MouseArea{
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            onClicked: {
+                if(mouse.button & Qt.RightButton)
+                    cppUIBackend.isCardPresent = false;
+                else
+                    cppUIBackend.isCardPresent = true;
+            }
+        }
     }
 }
