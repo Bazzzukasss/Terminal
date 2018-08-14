@@ -49,5 +49,6 @@
         <file>img/message-proccessing.gif</file>
         <file>img/message-waiting.gif</file>
         <file>img/bg-start.png</file>
+        <file>img/logo.svg</file>
     </qresource>
 </RCC>

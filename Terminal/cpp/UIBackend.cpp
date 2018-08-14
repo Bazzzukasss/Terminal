@@ -2,6 +2,7 @@
 #include "Core.h"
 #include "UIMessenger.h"
 #include "UILogic.h"
+#include <QDebug>
 
 UIBackend::UIBackend(Core *apCore, QObject* parent)
     : QObject(parent)
@@ -20,14 +21,13 @@ void UIBackend::initialize()
 {
     connect(mpCore, &Core::signalCardModeChanged,       this, &UIBackend::setCardMode);
     connect(mpCore, &Core::signalCardStateChanged,      this, &UIBackend::setCardState);
-    connect(mpCore, &Core::signalProductNameChanged,    this, &UIBackend::setProductName);
     connect(mpCore, &Core::signalProductPriceChanged,   this, &UIBackend::setProductPrice);
     connect(mpCore, &Core::signalError,                 this, &UIBackend::error);
 }
 
 bool UIBackend::doPayment(const QString& aPinCode)
 {
-    mpUILogic->showMessage(UIMessenger::MT_WAITING, tr("Please, waiting.\nTransaction is in process."), -1, false);
+    mpUILogic->showMessage(UIMessenger::MT_WAITING, tr("Please, wait.\nTransaction in progress."), -1, false);
 
     bool result = mpCore->checkPinCode(aPinCode);
     if( result )
@@ -69,11 +69,6 @@ bool UIBackend::getCardPresent() const
     return mIsCardPresent;
 }
 
-QString UIBackend::getProductName() const
-{
-    return mProductName;
-}
-
 void UIBackend::setCardMode(int aCardMode)
 {
     mCardMode = aCardMode;
@@ -94,12 +89,7 @@ void UIBackend::setProductPrice(double aPrice)
 
 void UIBackend::setCardPresent(bool aIsCardPresent)
 {
+    qDebug()<<"CARD:"<<aIsCardPresent;
     mIsCardPresent = aIsCardPresent;
     emit signalCardPresentChanged(mIsCardPresent);
-}
-
-void UIBackend::setProductName(QString aProductName)
-{
-    mProductName = aProductName;
-    emit signalProductNameChanged(mProductName);
 }
