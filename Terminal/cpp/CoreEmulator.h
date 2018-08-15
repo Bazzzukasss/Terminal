@@ -14,6 +14,7 @@ public:
     bool refreshData() override;
 
 private:
+    QString mCorrectPinCode{"1111"};
     void proccessEmulation(int aTime = 1500);
 };
 

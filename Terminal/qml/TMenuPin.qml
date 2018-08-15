@@ -46,10 +46,10 @@ TMenu{
                 id: buttonBackspace
                 anchors.bottom: parent.bottom
                 anchors.left: parent.left
-                icon: "qrc:/img/backspace.svg"
+                icon: input.value.length > 0 ? "qrc:/img/backspace.svg" : "qrc:/img/error-image.svg"
                 styleItem: MyStyle.buttonRedRound
                 styleItemPressed: MyStyle.buttonRedRoundPressed
-                onSignalClicked: input.value.length >0 ? input.backSpace() : root.signalGoTo("MENU_CARD")
+                onSignalClicked: input.value.length > 0 ? input.backSpace() : root.signalGoTo("MENU_ERROR")
             }
 
             TButton{
@@ -71,23 +71,5 @@ TMenu{
         }
     }
 
-
-    Item{
-        id: debug
-        enabled: !cppUIAssistant.isReleaseVersion()
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height:16
-        MouseArea{
-            anchors.fill: parent
-            acceptedButtons: Qt.LeftButton | Qt.RightButton
-            onClicked: {
-                if(mouse.button & Qt.RightButton)
-                    cppUIBackend.isCardPresent = false;
-                else
-                    cppUIBackend.isCardPresent = true;
-            }
-        }
-    }
+    TCardEmulator{}
 }

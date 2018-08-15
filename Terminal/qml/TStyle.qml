@@ -116,6 +116,8 @@ QtObject {
         geometry:       [keySize,keySize,keySize/2]
         bgColors:       [clRedLt,clRedLt]
         fonts:          [fontH2bDk]
+        useIconGeometry: true
+        iconGeometry:   [64,64,0]
     }
     readonly property TStyleItem buttonRedRoundPressed: TStyleItem {
         geometry:       [keySize,keySize,keySize/2]

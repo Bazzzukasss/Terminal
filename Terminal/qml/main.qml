@@ -7,8 +7,14 @@ Window {
     visible: true
     width: MyStyle.screenWidth
     height: MyStyle.screenHeight
+    maximumHeight: height
+    maximumWidth: width
+    minimumHeight: height
+    minimumWidth: width
     title: qsTr("Innotrans") + cppLinguist.emptyString
     currentMenu: MyStyle.menuStart
+
+    //flags:Qt.MSWindowsFixedSizeDialogHint//|Qt.FramelessWindowHint// | Qt.Window
 
     property string currentMenu
 

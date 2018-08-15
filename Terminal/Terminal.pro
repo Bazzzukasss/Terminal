@@ -60,7 +60,8 @@ DISTFILES += \
     qml/TButtonKeyboard.qml \
     qml/TLine.qml \
     qml/TMaskEdit.qml \
-    qml/TMaskIndicator.qml
+    qml/TMaskIndicator.qml \
+    qml/TCardEmulator.qml
 
 HEADERS += \
     cpp/Linguist.h \

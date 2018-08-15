@@ -50,5 +50,6 @@
         <file>img/message-waiting.gif</file>
         <file>img/bg-start.png</file>
         <file>img/logo.svg</file>
+        <file>qml/TCardEmulator.qml</file>
     </qresource>
 </RCC>

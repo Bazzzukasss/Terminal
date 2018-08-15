@@ -2,17 +2,21 @@
 #include <QTimer>
 #include <QEventLoop>
 #include <QDebug>
+#include <QSettings>
 
 CoreEmulator::CoreEmulator(QObject *parent)
     : Core(parent)
 {
+     auto settings = new QSettings("config.ini",QSettings::IniFormat,this);
+
+     mCorrectPinCode = settings->value("CorrectPinCode","1111").toString();
 }
 
 bool CoreEmulator::checkPinCode(const QString &aPinCode)
 {
     proccessEmulation();
-    qDebug()<<"checkPinCode:"<<aPinCode;
-    return aPinCode == "1111";
+    qDebug()<<"UserPinCode: " << aPinCode << " CorrectPinCode: " << mCorrectPinCode;
+    return aPinCode == mCorrectPinCode;
 }
 
 bool CoreEmulator::doPayment()

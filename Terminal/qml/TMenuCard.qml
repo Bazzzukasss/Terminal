@@ -109,22 +109,5 @@ TMenu{
         source: "qrc:/img/card-nfc.svg"
     }
 
-    Item{
-        id: debug
-        enabled: !cppUIAssistant.isReleaseVersion()
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height:16
-        MouseArea{
-            anchors.fill: parent
-            acceptedButtons: Qt.LeftButton | Qt.RightButton
-            onClicked: {
-                if(mouse.button & Qt.RightButton)
-                    cppUIBackend.isCardPresent = false;
-                else
-                    cppUIBackend.isCardPresent = true;
-            }
-        }
-    }
+    TCardEmulator{}
 }
