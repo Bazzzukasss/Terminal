@@ -6,6 +6,7 @@
 
 CoreEmulator::CoreEmulator(QObject *parent)
     : Core(parent)
+    , mCorrectPinCode("1111")
 {
      auto settings = new QSettings("config.ini",QSettings::IniFormat,this);
 
