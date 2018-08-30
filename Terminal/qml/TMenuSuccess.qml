@@ -15,15 +15,6 @@ TMenu{
         }
     }
 
-    TRectangle{
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        height: 150
-        color1: MyStyle.clTransparent
-        color2: MyStyle.clDark
-    }
-
     Image{
         id: img
         width: 80
