@@ -16,10 +16,8 @@ TMenu{
         id: timer
         interval: MyStyle.timerValue;
         onTriggered:{
-            if(cppUIBackend.isCardPresent)
-                root.signalGoTo("MENU_CARD");
-            else
-                root.signalGoTo("MENU_START");
+            cppUIBackend.isCardPresent = false
+            root.signalGoTo("MENU_START")
         }
 
     }

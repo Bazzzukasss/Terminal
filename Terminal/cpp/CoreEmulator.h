@@ -15,7 +15,8 @@ public:
 
 private:
     QString mCorrectPinCode;
-    void proccessEmulation(int aTime = 1500);
+    bool proccessEmulation(int aTime = 1500);
+    bool mIsProccessing;
 };
 
 #endif // COREEMULATOR_H

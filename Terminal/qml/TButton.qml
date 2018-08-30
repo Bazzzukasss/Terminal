@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtGraphicalEffects 1.0
+//import QtGraphicalEffects 1.0
 import CustomControls 1.0
 
 Item {
@@ -46,7 +46,7 @@ Item {
         Image{
             id: image
             anchors.centerIn: parent
-        }
+        }/*
         ColorOverlay {
             id: overlay
             visible: styleItemCurrent.useIconColor
@@ -54,7 +54,7 @@ Item {
             anchors.fill: image
             source: image
             color: styleItemCurrent.iconColor
-        }
+        }*/
         TLabel{
             id: label
             anchors.centerIn: parent

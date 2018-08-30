@@ -7,6 +7,7 @@
 CoreEmulator::CoreEmulator(QObject *parent)
     : Core(parent)
     , mCorrectPinCode("1111")
+    , mIsProccessing{false}
 {
      auto settings = new QSettings("config.ini",QSettings::IniFormat,this);
 
@@ -15,17 +16,17 @@ CoreEmulator::CoreEmulator(QObject *parent)
 
 bool CoreEmulator::checkPinCode(const QString &aPinCode)
 {
-    proccessEmulation();
+    bool result = proccessEmulation();
     qDebug()<<"UserPinCode: " << aPinCode << " CorrectPinCode: " << mCorrectPinCode;
-    return aPinCode == mCorrectPinCode;
+    return (aPinCode == mCorrectPinCode) && result;
 }
 
 bool CoreEmulator::doPayment()
 {
-    proccessEmulation();
+    bool result = proccessEmulation();
     qDebug()<<"doPayment";
     //emit signalError("Core payment error!");
-    return true;
+    return result;
 }
 
 bool CoreEmulator::refreshData()
@@ -50,12 +51,19 @@ bool CoreEmulator::refreshData()
     return true;
 }
 
-void CoreEmulator::proccessEmulation(int aTime)
+bool CoreEmulator::proccessEmulation(int aTime)
 {
     QEventLoop loop;
     QTimer timer;
+    bool result(true);
+
     timer.setSingleShot(true);
-    QObject::connect(&timer, &QTimer::timeout, [&](){ loop.quit(); });
+    connect(&timer, &QTimer::timeout, [&](){ loop.quit(); });
+    connect(this,&CoreEmulator::signalAbortProcess, [&](){ if(mIsProccessing) {result = false; loop.quit();} });
     timer.start(aTime);
+    mIsProccessing = true;
     loop.exec();
+    mIsProccessing = false;
+
+    return result;
 }

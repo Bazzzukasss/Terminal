@@ -20,3 +20,9 @@ bool Core::refreshData()
 {
     return false;
 }
+
+bool Core::abortProccess()
+{
+    emit signalAbortProcess();
+    return false;
+}

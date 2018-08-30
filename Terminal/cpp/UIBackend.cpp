@@ -23,6 +23,7 @@ void UIBackend::initialize()
     connect(mpCore, &Core::signalCardStateChanged,      this, &UIBackend::setCardState);
     connect(mpCore, &Core::signalProductPriceChanged,   this, &UIBackend::setProductPrice);
     connect(mpCore, &Core::signalError,                 this, &UIBackend::error);
+    connect(this, &UIBackend::signalCardPresentChanged, this,[&](){ if(!mIsCardPresent) emit mpCore->abortProccess(); });
 }
 
 bool UIBackend::doPayment(const QString& aPinCode)
@@ -35,7 +36,7 @@ bool UIBackend::doPayment(const QString& aPinCode)
 
     mpUILogic->hideMessage();
 
-    return result;
+    return result && mIsCardPresent;
 }
 
 bool UIBackend::refreshData()

@@ -38,7 +38,7 @@ TMenu{
         anchors.horizontalCenter: parent.horizontalCenter
         width: 168
         height: 168
-        source:"qrc:/img/qr.svg"
+        source:"qrc:/img/qr.png"
     }
 
     TLabel{

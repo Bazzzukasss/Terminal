@@ -140,12 +140,6 @@ QtObject {
     readonly property int keySize: 64
     readonly property TStyleFont keyFont: fontH1bDk
 
-    readonly property TStyleItem buttonEdit: TStyleItem {
-        geometry:       [40,40,0]
-        useIconColor:   true
-        iconColor:      clDark
-        fonts:          [keyFont]
-    }
     readonly property TStyleItem buttonKeyboard: TStyleItem {
         geometry:       [keySize,keySize,keySize/2]
         bgColors:       [clWhite,clWhite]

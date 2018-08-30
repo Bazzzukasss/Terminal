@@ -1656,3 +1656,7 @@
 /DeployTerminal/QtQuick/Controls.2/qtquickcontrols2plugind.dll
 /DeployTerminal/QtQuick/Controls.2/qtquickcontrols2plugind.pdb
 /DeployTerminal/video.avi
+/DeployTerminal/mediaservice/dsengine.dll
+/DeployTerminal/mediaservice/qtmedia_audioengine.dll
+/DeployTerminal/mediaservice/wmfengine.dll
+/Terminal.7z

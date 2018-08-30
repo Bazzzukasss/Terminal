@@ -13,6 +13,7 @@ public:
     virtual bool checkPinCode(const QString& aPinCode);
     virtual bool doPayment();
     virtual bool refreshData();
+    virtual bool abortProccess();
 
 signals:
     void signalCardModeChanged( int aMode );
@@ -20,6 +21,7 @@ signals:
     void signalProductNameChanged( const QString& aName );
     void signalProductPriceChanged( double aPrice );
     void signalError( const QString& aInformation);
+    void signalAbortProcess();
 };
 
 #endif // CORE_H

@@ -35,7 +35,6 @@
         <file>img/message-request.svg</file>
         <file>img/message-warning.svg</file>
         <file>img/bg-information.png</file>
-        <file>img/qr.svg</file>
         <file>img/next-image.svg</file>
         <file>img/spinner.svg</file>
         <file>img/bg-header.svg</file>
@@ -51,5 +50,6 @@
         <file>img/bg-start.png</file>
         <file>img/logo.svg</file>
         <file>qml/TCardEmulator.qml</file>
+        <file>img/qr.png</file>
     </qresource>
 </RCC>
