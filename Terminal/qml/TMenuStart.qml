@@ -5,6 +5,7 @@ import CustomControls 1.0
 TMenu{
     id: root
     name:"MENU_START"
+    property alias pathToVideo : video.source
 
     onVisibleChanged:
     {
@@ -41,8 +42,8 @@ TMenu{
 
         AnimatedImage{
             id: video
-            source: "file:video.gif"
-            visible: cppUIAssistant.isFileExists("video.gif")
+            source: "file:"+cppUIAssistant.getPathToVideo()
+            visible: source!=""
             anchors.fill: parent
             playing: true
         }

@@ -17,6 +17,7 @@ Window {
     //flags:Qt.MSWindowsFixedSizeDialogHint//|Qt.FramelessWindowHint// | Qt.Window
 
     property string currentMenu
+    property alias pathToVideo: menuStart.pathToVideo
 
 	signal signalUIParameterChaged(string name, variant value)
 	signal signalUIAction(string name, variant value)

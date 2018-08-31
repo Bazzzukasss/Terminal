@@ -12,10 +12,12 @@ public:
 
     Q_INVOKABLE bool isFileExists(const QString& aFilename);
     Q_INVOKABLE bool isDebugVersion() const;
+    Q_INVOKABLE QString getPathToVideo() const;
+
 
 private:
     bool mIsDebugVersion{false};
-
+    QString mPathToVideo{"video.gif"};
     void initialize();
 };
 
