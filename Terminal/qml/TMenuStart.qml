@@ -8,18 +8,22 @@ TMenu{
 
     onVisibleChanged:
     {
+        /*
         if(visible)
             video.play()
         else
             video.stop()
+            */
     }
 
     Item{
         id: videoRect
         anchors.fill: parent
+
         Rectangle{
             anchors.fill: parent
             color: "#000000"
+            /*
             Video {
                 id: video
                 visible: cppUIAssistant.isFileExists("video.avi")
@@ -32,6 +36,15 @@ TMenu{
                 loops: MediaPlayer.Infinite
                 anchors.centerIn: parent
             }
+            */
+        }
+
+        AnimatedImage{
+            id: video
+            source: "file:video.gif"
+            visible: cppUIAssistant.isFileExists("video.gif")
+            anchors.fill: parent
+            playing: true
         }
 
         Image{
