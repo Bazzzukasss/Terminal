@@ -8,19 +8,9 @@ TMenu{
     onVisibleChanged:
         cppUIPlayer.setVisible(visible)
 
-    Item{
-        id: videoRect
+
+    MouseArea{
         anchors.fill: parent
-
-        Image{
-            id: img
-            anchors.centerIn: parent
-            source:"qrc:/img/bg-start.png"
-        }
-
-        MouseArea{
-            anchors.fill: parent
-            onClicked: root.signalGoTo("MENU_CARD");
-        }
+        onClicked: root.signalGoTo("MENU_CARD");
     }
 }
