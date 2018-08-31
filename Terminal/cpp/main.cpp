@@ -7,6 +7,7 @@
 #include "UIAssistant.h"
 #include "Core.h"
 #include "CoreEmulator.h"
+#include "VideoPlayer.h"
 
 #define EMULATION
 
@@ -23,7 +24,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
 
@@ -33,7 +34,7 @@ int main(int argc, char *argv[])
     fontDB.addApplicationFont("qrc:/fonts/Roboto-Regular.ttf");
     fontDB.addApplicationFont("qrc:/fonts/Roboto-Thin.ttf");
 
-    QTranslator translator;
+    //QTranslator translator;
     //InitializeLinguist(&translator);
 
 #ifdef EMULATION
@@ -41,14 +42,18 @@ int main(int argc, char *argv[])
 #else
     auto core = new Core(&app);
 #endif
+    VideoPlayer uiPlayer;
+    uiPlayer.setGeometry(0,0,272,480);
+    uiPlayer.setWindowFlags(Qt::FramelessWindowHint);
     auto uiBackend = new UIBackend(core,&app);
     auto uiAssistant = new UIAssistant(&app);
-    UILogic uiLogic(&engine,uiAssistant,uiBackend);
+    UILogic uiLogic(&engine,&uiPlayer,uiAssistant,uiBackend);
 
     qmlRegisterSingletonType(QUrl(QLatin1String("qrc:/qml/TStyle.qml")), "CustomControls", 1, 0, "MyStyle");
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 
+    uiPlayer.show();
     return app.exec();
 }

@@ -1,4 +1,4 @@
-QT += quick widgets multimedia
+QT += quick widgets multimedia multimediawidgets
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -20,7 +20,8 @@ SOURCES += \
     cpp/UIBackend.cpp \
     cpp/Core.cpp \
     cpp/CoreEmulator.cpp \
-    cpp/UIMessenger.cpp
+    cpp/UIMessenger.cpp \
+    cpp/VideoPlayer.cpp
 
 RESOURCES += \
     res.qrc
@@ -70,4 +71,5 @@ HEADERS += \
     cpp/UIBackend.h \
     cpp/Core.h \
     cpp/CoreEmulator.h \
-    cpp/UIMessenger.h
+    cpp/UIMessenger.h \
+    cpp/VideoPlayer.h

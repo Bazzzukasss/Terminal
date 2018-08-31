@@ -8,13 +8,15 @@
 #include "UILogic.h"
 #include "UIAssistant.h"
 #include "UIBackend.h"
+#include "VideoPlayer.h"
 
-UILogic::UILogic(QQmlApplicationEngine *apEngine, UIAssistant *apUIAssistant, UIBackend *apUIBackend, QObject *parent)
+UILogic::UILogic(QQmlApplicationEngine *apEngine, VideoPlayer *apUIPlayer, UIAssistant *apUIAssistant, UIBackend *apUIBackend, QObject *parent)
     : QObject(parent)
     , mpEngine(apEngine)
     , mpUIAssistant(apUIAssistant)
     , mpUIBackend(apUIBackend)
     , mpMessenger (new UIMessenger(this))
+    , mpUIPlayer(apUIPlayer)
 {   
     connect(mpEngine,&QQmlApplicationEngine::objectCreated,[&](){
         mpQuickWindow = qobject_cast<QQuickWindow*>(mpEngine->rootObjects().value(0));
@@ -28,6 +30,8 @@ UILogic::UILogic(QQmlApplicationEngine *apEngine, UIAssistant *apUIAssistant, UI
     });
 
     setContextProperty("cppLinguist", Linguist::getInstance());
+    if(mpUIPlayer != nullptr)
+        setContextProperty("cppUIPlayer", mpUIPlayer);
 
     if(mpUIBackend != nullptr)
     {
@@ -36,7 +40,11 @@ UILogic::UILogic(QQmlApplicationEngine *apEngine, UIAssistant *apUIAssistant, UI
     }
 
     if(mpUIAssistant != nullptr)
+    {
         setContextProperty("cppUIAssistant", mpUIAssistant);
+        if(mpUIPlayer != nullptr)
+            mpUIPlayer->loadFile( mpUIAssistant->getPathToVideo() );
+    }
 }
 
 void UILogic::initializeProperties()
@@ -53,6 +61,8 @@ void UILogic::initializeConnections()
     connect(mpQuickWindow, SIGNAL(signalMessageAnswer(QString)), mpMessenger, SLOT(slotUserAnswerReceived(QString)));
     connect(mpMessenger, SIGNAL(signalShowMessage(QVariant, QVariant)), mpQuickWindow, SLOT(showMessage(QVariant, QVariant)));
     connect(mpMessenger, SIGNAL(signalHideMessage(QVariant)), mpQuickWindow, SLOT(hideMessage()));
+
+    connect(mpUIPlayer, SIGNAL(signalClicked(QVariant)), mpQuickWindow, SLOT(goTo(QVariant)));
 }
 
 void UILogic::initializeHandlers()

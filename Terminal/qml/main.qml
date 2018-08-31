@@ -5,6 +5,8 @@ import CustomControls 1.0
 Window {
     id: root
     visible: true
+    x: 0
+    y: 0
     width: MyStyle.screenWidth
     height: MyStyle.screenHeight
     maximumHeight: height
@@ -14,10 +16,9 @@ Window {
     title: qsTr("Innotrans") + cppLinguist.emptyString
     currentMenu: MyStyle.menuStart
 
-    //flags:Qt.MSWindowsFixedSizeDialogHint//|Qt.FramelessWindowHint// | Qt.Window
+    flags: Qt.FramelessWindowHint// | Qt.Window
 
     property string currentMenu
-    property alias pathToVideo: menuStart.pathToVideo
 
 	signal signalUIParameterChaged(string name, variant value)
 	signal signalUIAction(string name, variant value)
