@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import CustomControls 1.0
-import QtMultimedia 5.0
+//import QtMultimedia 5.0
 
 TMenu{
     id: root
