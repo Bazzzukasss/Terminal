@@ -5,6 +5,13 @@ VideoPlayer::VideoPlayer(QWidget *parent)
     , mediaPlayer(0, QMediaPlayer::VideoSurface)
 {
     mediaPlayer.setVideoOutput(this);
+    connect(&mediaPlayer,&QMediaPlayer::mediaStatusChanged,this,[&](QMediaPlayer::MediaStatus status){
+                                                                                                        if(status == QMediaPlayer::EndOfMedia)
+                                                                                                        {
+                                                                                                            mediaPlayer.setPosition(0);
+                                                                                                            mediaPlayer.play();
+                                                                                                        }
+                                                                                                    });
 }
 
 VideoPlayer::~VideoPlayer()
