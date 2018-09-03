@@ -9,9 +9,7 @@ CoreEmulator::CoreEmulator(QObject *parent)
     , mCorrectPinCode("1111")
     , mIsProccessing{false}
 {
-     auto settings = new QSettings("config.ini",QSettings::IniFormat,this);
-
-     mCorrectPinCode = settings->value("CorrectPinCode","1111").toString();
+     mCorrectPinCode = mSettings->value("CorrectPinCode","1111").toString();
 }
 
 bool CoreEmulator::checkPinCode(const QString &aPinCode)

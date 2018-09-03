@@ -21,6 +21,7 @@ void UIBackend::initialize()
 {
     connect(mpCore, &Core::signalCardModeChanged,       this, &UIBackend::setCardMode);
     connect(mpCore, &Core::signalCardStateChanged,      this, &UIBackend::setCardState);
+    connect(mpCore, &Core::signalCardPresentChanged,    this, &UIBackend::setCardPresent);
     connect(mpCore, &Core::signalProductPriceChanged,   this, &UIBackend::setProductPrice);
     connect(mpCore, &Core::signalError,                 this, &UIBackend::error);
     connect(this, &UIBackend::signalCardPresentChanged, this,[&](){ if(!mIsCardPresent) emit mpCore->abortProccess(); });

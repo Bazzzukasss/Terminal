@@ -2,6 +2,7 @@
 #define CORE_H
 
 #include <QObject>
+class QSettings;
 
 class Core : public QObject
 {
@@ -18,10 +19,18 @@ public:
 signals:
     void signalCardModeChanged( int aMode );
     void signalCardStateChanged( const QString& aState );
+    void signalCardPresentChanged( bool aIsPresent );
     void signalProductNameChanged( const QString& aName );
     void signalProductPriceChanged( double aPrice );
     void signalError( const QString& aInformation);
     void signalAbortProcess();
+
+protected:
+    QSettings* mSettings;
+    QString mPathToCardGPIO;
+
+private slots:
+    void slotCardPresentChanged(const QString &aPath);
 };
 
 #endif // CORE_H
