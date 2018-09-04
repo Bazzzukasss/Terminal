@@ -12,6 +12,8 @@ VideoPlayer::VideoPlayer(QWidget *parent)
                                                                                                             mediaPlayer.play();
                                                                                                         }
                                                                                                     });
+
+    connect(&mediaPlayer,&QMediaPlayer::positionChanged,this,[&](qint64 pos){ if(pos == 0) mediaPlayer.play(); });
 }
 
 VideoPlayer::~VideoPlayer()
