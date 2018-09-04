@@ -2,6 +2,7 @@
 #define COREEMULATOR_H
 
 #include "Core.h"
+#include <QEventLoop>
 
 class CoreEmulator : public Core
 {
@@ -17,6 +18,7 @@ private:
     QString mCorrectPinCode;
     bool proccessEmulation(int aTime = 1500);
     bool mIsProccessing;
+    QEventLoop mLoop;
 };
 
 #endif // COREEMULATOR_H

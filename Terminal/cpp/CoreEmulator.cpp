@@ -29,7 +29,11 @@ bool CoreEmulator::doPayment()
 
 bool CoreEmulator::refreshData()
 {
-    double productPrice = (rand()*1000 / RAND_MAX) / 10.0;
+    static int i(0) ;
+    double prices[]={12.5,35.7,73.4};
+    double productPrice = prices[i];//(rand()*1000 / RAND_MAX) / 10.0;
+    if(++i>=3)
+        i=0;
     QString productName = "Product Name" + QString::number(rand()*1000 / RAND_MAX);
     QString cardState("Payment method");
     int cardMode = rand()*2 / RAND_MAX + 1;
@@ -51,16 +55,15 @@ bool CoreEmulator::refreshData()
 
 bool CoreEmulator::proccessEmulation(int aTime)
 {
-    QEventLoop loop;
     QTimer timer;
     bool result(true);
 
     timer.setSingleShot(true);
-    connect(&timer, &QTimer::timeout, [&](){ loop.quit(); });
-    connect(this,&CoreEmulator::signalAbortProcess, [&](){ if(mIsProccessing) {result = false; loop.quit();} });
+    connect(&timer, &QTimer::timeout, [&](){ mLoop.quit(); });
+    connect(this,&CoreEmulator::signalAbortProcess, [&](){ if(mIsProccessing) {result = false; mLoop.quit();} });
     timer.start(aTime);
     mIsProccessing = true;
-    loop.exec();
+    mLoop.exec();
     mIsProccessing = false;
 
     return result;
