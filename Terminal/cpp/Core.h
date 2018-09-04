@@ -2,6 +2,7 @@
 #define CORE_H
 
 #include <QObject>
+#include <QFile>
 class QSettings;
 
 class Core : public QObject
@@ -28,9 +29,10 @@ signals:
 protected:
     QSettings* mSettings;
     QString mPathToCardGPIO;
+    QFile gpio_value;
 
 private slots:
-    void slotCardPresentChanged(const QString &aPath);
+    void slotCardPresentChanged(int);
 };
 
 #endif // CORE_H
