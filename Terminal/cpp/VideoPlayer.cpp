@@ -9,7 +9,7 @@ VideoPlayer::VideoPlayer(QWidget *parent)
                                                                                                         if(status == QMediaPlayer::EndOfMedia)
                                                                                                         {
                                                                                                             mediaPlayer.setPosition(0);
-                                                                                                            mediaPlayer.play();
+                                                                                                            //mediaPlayer.play();
                                                                                                         }
                                                                                                     });
 
