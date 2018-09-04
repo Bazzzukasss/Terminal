@@ -31,12 +31,12 @@ bool CoreEmulator::refreshData()
 {
     static int i(0) ;
     double prices[]={12.5,35.7,73.4};
-    double productPrice = prices[i];//(rand()*1000 / RAND_MAX) / 10.0;
+    double productPrice = prices[i];
     if(++i>=3)
         i=0;
-    QString productName = "Product Name" + QString::number(rand()*1000 / RAND_MAX);
+    QString productName = "Product Name" + QString::number( productPrice );
     QString cardState("Payment method");
-    int cardMode = rand()*2 / RAND_MAX + 1;
+    int cardMode = i + 1;
 
     switch(cardMode)
     {

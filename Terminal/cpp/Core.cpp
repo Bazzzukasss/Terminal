@@ -49,6 +49,6 @@ void Core::slotCardPresentChanged(int fd)
     if (gpio_value.isOpen())
     {
         gpio_value.seek(0);
-        emit signalCardPresentChanged(!!gpio_value.readAll().trimmed().toInt());
+        emit signalCardPresentChanged(!gpio_value.readAll().trimmed().toInt());
     }
 }
