@@ -1,5 +1,5 @@
 #include "Core.h"
-#include "QFileSystemWatcher"
+#include <QSocketNotifier>
 #include <QSettings>
 #include <QDebug>
 #include <QFile>
@@ -12,8 +12,14 @@ Core::Core(QObject *parent)
 
     if(!mPathToCardGPIO.isEmpty())
     {
-        auto fileWatcher = new QFileSystemWatcher({mPathToCardGPIO},this);
-        connect(fileWatcher, &QFileSystemWatcher::fileChanged, this, &Core::slotCardPresentChanged);
+        QSocketNotifier *gpio_notifier;
+
+        gpio_value.setFileName(mPathToCardGPIO);
+        gpio_value.open(QFile::ReadOnly);
+
+        gpio_notifier = new QSocketNotifier(gpio_value.handle(), QSocketNotifier::Exception, this);
+        gpio_notifier->setEnabled(true);
+        connect(gpio_notifier, SIGNAL(activated(int)), this, SLOT(slotCardPresentChanged(int)));
     }
 }
 
@@ -38,12 +44,11 @@ bool Core::abortProccess()
     return false;
 }
 
-void Core::slotCardPresentChanged(const QString& aPath)
+void Core::slotCardPresentChanged(int fd)
 {
-    QFile f(aPath);
-    if (f.open(QFile::ReadOnly))
+    if (gpio_value.isOpen())
     {
-        QTextStream in(&f);
-        emit signalCardPresentChanged( in.readAll().toInt() == 1 );
+        gpio_value.seek(0);
+        emit signalCardPresentChanged(!!gpio_value.readAll().trimmed().toInt());
     }
 }
