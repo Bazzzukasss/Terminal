@@ -5,6 +5,7 @@
 
 #include <QtGui/QMovie>
 #include <QVideoWidget>
+#include <QMediaPlaylist>
 
 class VideoPlayer : public QVideoWidget
 {
@@ -25,6 +26,7 @@ protected:
 
 private:
     QMediaPlayer mediaPlayer;
+    QMediaPlaylist playList;
 };
 
 #endif

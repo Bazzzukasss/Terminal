@@ -1,10 +1,16 @@
 #include "VideoPlayer.h"
 
+#define USE_PLAYLIST
+
 VideoPlayer::VideoPlayer(QWidget *parent)
     : QVideoWidget(parent)
     , mediaPlayer(0, QMediaPlayer::VideoSurface)
 {
     mediaPlayer.setVideoOutput(this);
+
+#ifdef USE_PLAYLIST
+    mediaPlayer.setPlaylist(&playList);
+#else
     connect(&mediaPlayer,&QMediaPlayer::mediaStatusChanged,this,[&](QMediaPlayer::MediaStatus status){
                                                                                                         if(status == QMediaPlayer::EndOfMedia)
                                                                                                         {
@@ -14,6 +20,7 @@ VideoPlayer::VideoPlayer(QWidget *parent)
                                                                                                     });
 
     connect(&mediaPlayer,&QMediaPlayer::positionChanged,this,[&](qint64 pos){ if(pos == 0) mediaPlayer.play(); });
+#endif
 }
 
 VideoPlayer::~VideoPlayer()
@@ -22,7 +29,13 @@ VideoPlayer::~VideoPlayer()
 
 void VideoPlayer::loadFile(const QString &aFilename)
 {
-    mediaPlayer.setMedia(QUrl(aFilename) );
+    #ifdef USE_PLAYLIST
+        playList.addMedia(QUrl::fromLocalFile(aFilename));
+        playList.setCurrentIndex(0);
+        playList.setPlaybackMode(QMediaPlaylist::Loop);
+    #else
+        mediaPlayer.setMedia(QUrl(aFilename) );
+    #endif
     mediaPlayer.play();
 }
 
