@@ -15,6 +15,7 @@ void UIAssistant::initialize()
 
     mIsDebugVersion = settings->value("isDebugVersion",false).toBool();
     mPathToVideo = settings->value("pathToVideo","").toString();
+    mPathToRewindPicture = settings->value("pathToRewindPicture","").toString();
 }
 
 bool UIAssistant::isFileExists(const QString &aFilename)
@@ -30,4 +31,9 @@ bool UIAssistant::isDebugVersion() const
 QString UIAssistant::getPathToVideo() const
 {
     return mPathToVideo;
+}
+
+QString UIAssistant::getPathToRewindPicture() const
+{
+    return mPathToRewindPicture;
 }

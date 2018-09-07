@@ -13,11 +13,13 @@ public:
     Q_INVOKABLE bool isFileExists(const QString& aFilename);
     Q_INVOKABLE bool isDebugVersion() const;
     Q_INVOKABLE QString getPathToVideo() const;
+    Q_INVOKABLE QString getPathToRewindPicture() const;
 
 
 private:
     bool mIsDebugVersion{false};
     QString mPathToVideo{"video.gif"};
+    QString mPathToRewindPicture;
     void initialize();
 };
 

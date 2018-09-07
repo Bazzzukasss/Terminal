@@ -43,7 +43,7 @@ UILogic::UILogic(QQmlApplicationEngine *apEngine, VideoPlayer *apUIPlayer, UIAss
     {
         setContextProperty("cppUIAssistant", mpUIAssistant);
         if(mpUIPlayer != nullptr)
-            mpUIPlayer->loadFile( mpUIAssistant->getPathToVideo() );
+            mpUIPlayer->loadFile( mpUIAssistant->getPathToVideo(),mpUIAssistant->getPathToRewindPicture() );
     }
 }
 

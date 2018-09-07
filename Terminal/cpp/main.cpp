@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
 #else
     auto core = new Core(&app);
 #endif
+
     VideoPlayer uiPlayer;
     uiPlayer.setGeometry(0,0,272,480);
     uiPlayer.setWindowFlags(Qt::FramelessWindowHint);
