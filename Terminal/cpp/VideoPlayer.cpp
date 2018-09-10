@@ -1,7 +1,7 @@
 #include "VideoPlayer.h"
 #include <QPixmap>
 
-#define USE_PLAYLIST
+//#define USE_PLAYLIST
 
 VideoPlayer::VideoPlayer(QWidget *parent)
     : QVideoWidget(parent)
@@ -30,11 +30,18 @@ VideoPlayer::VideoPlayer(QWidget *parent)
                                                                                                         if(status == QMediaPlayer::EndOfMedia)
                                                                                                         {
                                                                                                             mediaPlayer.setPosition(0);
+                                                                                                            mRewindWidget.show();
+                                                                                                            mRewindWidget.raise();
                                                                                                             //mediaPlayer.play();
                                                                                                         }
                                                                                                     });
 
-    connect(&mediaPlayer,&QMediaPlayer::positionChanged,this,[&](qint64 pos){ if(pos == 0) mediaPlayer.play(); });
+    connect(&mediaPlayer,&QMediaPlayer::positionChanged,this,[&](qint64 pos){
+        if(pos == 0)
+            mediaPlayer.play();
+        if(mRewindWidget.isVisible() )
+            mRewindWidget.hide();
+    });
 #endif
 }
 
