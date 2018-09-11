@@ -6,6 +6,7 @@
 VideoPlayer::VideoPlayer(QWidget *parent)
     : QVideoWidget(parent)
     , mediaPlayer(0, QMediaPlayer::VideoSurface)
+    , mIsRewindPictureLoaded(false)
 {
     mRewindWidget.setWindowFlags(Qt::FramelessWindowHint);
     mediaPlayer.setVideoOutput(this);
@@ -30,8 +31,11 @@ VideoPlayer::VideoPlayer(QWidget *parent)
                                                                                                         if(status == QMediaPlayer::EndOfMedia)
                                                                                                         {
                                                                                                             mediaPlayer.setPosition(0);
-                                                                                                            mRewindWidget.show();
-                                                                                                            mRewindWidget.raise();
+                                                                                                            if(mIsRewindPictureLoaded)
+                                                                                                            {
+                                                                                                                mRewindWidget.show();
+                                                                                                                mRewindWidget.raise();
+                                                                                                            }
                                                                                                             //mediaPlayer.play();
                                                                                                         }
                                                                                                     });
@@ -60,7 +64,12 @@ void VideoPlayer::loadFile(const QString &aMediaFilename, const QString &aRewind
     #endif
         qDebug()<<aRewindFilename;
     if(!aRewindFilename.isEmpty())
-        mRewindWidget.setPixmap(QPixmap(aRewindFilename));
+    {
+        QPixmap pixmap;
+        mIsRewindPictureLoaded = pixmap.load(aRewindFilename);
+        if(mIsRewindPictureLoaded)
+            mRewindWidget.setPixmap(pixmap);
+    }
 
     mRewindWidget.show();
     mediaPlayer.play();

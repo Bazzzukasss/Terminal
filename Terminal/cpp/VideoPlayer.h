@@ -30,7 +30,7 @@ private:
     QLabel mRewindWidget;
     QMediaPlayer mediaPlayer;
     QMediaPlaylist playList;
-
+    bool mIsRewindPictureLoaded;
 };
 
 #endif
